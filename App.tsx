@@ -14,15 +14,20 @@ export default class App extends Component {
     });
   }
 
- 
-
   render() {
-
-    return (
+    if (this.state.isConnected) {
+      return (
         <View style={styles.container}>
-          <Text>isConnected: {this.state.isConnected?"true":"false"}</Text>
+          <Text>Connected</Text>
         </View>
-    );
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <Text>Not Connected</Text>
+        </View>
+      );
+    }
   }
 }
 
