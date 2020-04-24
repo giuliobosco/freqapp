@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+import NetInfo from '@react-native-community/netinfo';
+
+export default class App extends Component {
+  state = {
+    isConnected: null,
+  };
+
+  componentDidMount() {
+    NetInfo.fetch().then(state => {
+      this.setState({isConnected: state.isConnected});
+    });
+  }
+
+ 
+
+  render() {
+
+    return (
+        <View style={styles.container}>
+          <Text>isConnected: {this.state.isConnected?"true":"false"}</Text>
+        </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -16,4 +33,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
