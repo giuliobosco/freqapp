@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, Alert } from 'react-native';
 
 import LoadingView from '../../views/LoadingView';
 import NotFreqlineError from '../../views/NotFreqlineError';
@@ -12,6 +12,7 @@ export default class FreqlineComponent extends Component {
 
     state = {
         isLoading: true,
+        error: false,
         freqline: false,
         serial: false,
         db: false,
@@ -25,6 +26,14 @@ export default class FreqlineComponent extends Component {
             );
         }
 
+        const { error } = this.state;
+
+        if (error) {
+            return (
+                <NotFreqlineError/>
+            );
+        }
+
         const {freqline} = this.state;
 
         if (!freqline) {
@@ -33,13 +42,15 @@ export default class FreqlineComponent extends Component {
             );
         }
 
-        const {serial, db} = this.state;
+        const {serial} = this.state;
 
         if (!serial) {
             return (
                 <CenteredTextView text={'Freqline Internal Error\nSerial Communication Error'}/>
             );
         }
+
+        const { db } = this.state;
 
         if (!db) {
             return (
@@ -48,25 +59,29 @@ export default class FreqlineComponent extends Component {
         }
 
         return (
-            <Text>FreqlineComponent</Text>
+            <CenteredTextView text={'Freqline'}/>
         );
     }
 
     componentDidMount() {
-         freqlineService()
-         .then(response => {
-             if (response.freqline != null) {
-                 this.setState({freqline: response.freqline});
-             }
-             if (response.serial != null) {
-                 this.setState({serial: response.serial});
-             }
-             if (response.db != null) {
-                 this.setState({db: response.db});
-             }
+        freqlineService()
+        .then(response => response.json())
+        .then(response => {
+            if (response.freqline != null) {
+                this.setState({freqline: response.freqline});
+            }
+            if (response.serial != null) {
+                this.setState({serial: response.serial});
+            }
+            if (response.db != null) {
+                this.setState({db: response.db});
+            }
 
-             this.setState({isLoading: false});
-         })
+            this.setState({isLoading: false});
+        })
+        .catch(error => {
+            this.setState({error: true, isLoading: false})
+        })
     }
 
 }
