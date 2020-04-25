@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 
-import FreqlineComponent from '../freqline.component/FreqlineComponent';
+import FreqlineComponent from './FreqlineComponent';
 
-import LoadingView from '../../views/LoadingView';
-import NoInternetConnectionView from '../../views/NoInternetConnectionView';
+import LoadingView from '../views/LoadingView';
+import NoInternetConnectionView from '../views/NoInternetConnectionView';
 
 export default class MainComponent extends Component {
 
