@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
 import LoadingView from '../../views/LoadingView';
@@ -9,34 +9,34 @@ import { freqlineStatusStartCheck } from './freqlineStatusSlice';
 
 import useFetching from '../../utils/useFetching';
 
-const FreqlineComponent = ({freqlineStatus, freqlineStatusStartCheck}) => {
+const FreqlineComponent = ({ freqlineStatus, freqlineStatusStartCheck }) => {
 
     useFetching(freqlineStatusStartCheck)
 
     const { isLoading, error, freqlineOk, serialOk, dbOk } = freqlineStatus;
 
     if (isLoading) {
-        return (<LoadingView/>);
+        return (<LoadingView />);
     }
 
     if (error) {
-        return (<NotFreqlineError/>)
+        return (<NotFreqlineError />)
     }
 
     if (!freqlineOk) {
-        return (<NotFreqlineError/>)
+        return (<NotFreqlineError />)
     }
 
     if (!serialOk) {
-        return (<CenteredTextView text={'Freqline Internal Error\nSerial Communication Error'}/>)
+        return (<CenteredTextView text={'Freqline Internal Error\nSerial Communication Error'} />)
     }
 
     if (!dbOk) {
-        return (<CenteredTextView text={'Freqline Internal Error\nDatabase connection error'}/>)
+        return (<CenteredTextView text={'Freqline Internal Error\nDatabase connection error'} />)
     }
 
     return (
-        <CenteredTextView text={'Freqline'}/>
+        <CenteredTextView text={'Freqline'} />
     );
 }
 
