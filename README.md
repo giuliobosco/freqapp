@@ -13,10 +13,18 @@ Navigation: https://medium.com/handlebar-labs/navigating-navigation-in-react-nat
 
 - expo init freqapp  
 Using managed workflow with typescript
+- Redux
+  - redux testing (jest -> config, setup)
 - NetInfo
 - Learn React navigation https://reactnavigation.org/docs/getting-started/
-- HTTP API https://codeburst.io/integrating-react-native-apps-with-back-end-code-using-fetch-api-8aeb83dfb428
+
 
 ## remember
 
 Test with JEST
+- FreqlineComponent done
+  - LoginComponent
+    - Navigation
+      - Status
+      - Users
+        - User
