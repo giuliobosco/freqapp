@@ -9,7 +9,7 @@ const initState = {
     error: '',
 };
 
-describe('freqlineStatus reducer', () => {
+describe('Reducer::freqlineStatus', () => {
     it('should handle reducer state', () => {
         expect(freqlineStatus(undefined, {})).toEqual(initState);
     })

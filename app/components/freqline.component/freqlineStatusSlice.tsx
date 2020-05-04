@@ -44,10 +44,10 @@ const freqlineStatusSlice = createSlice({
     }
 });
 
-export const { 
-    freqlineStatusStartCheck, 
-    freqlineStatusSuccessCheck, 
-    freqlineStatusErrorCheck, 
+export const {
+    freqlineStatusStartCheck,
+    freqlineStatusSuccessCheck,
+    freqlineStatusErrorCheck,
 } = freqlineStatusSlice.actions;
 
 export default freqlineStatusSlice.reducer;
