@@ -13,6 +13,9 @@ export default function freqlineStatusMiddleware({dispatch}) {
                     freqlineService().then(json => {
                         dispatch(freqlineStatusSuccessCheck(json));
                     }).catch(error => {
+                        if (typeof error != 'string') {
+                            error = "Network Error"
+                        }
                         dispatch(freqlineStatusErrorCheck(error));
                     })
             }
