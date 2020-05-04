@@ -1,41 +1,42 @@
-import React, { Component } from 'react';
-import NetInfo from '@react-native-community/netinfo';
+import React from 'react';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
 
-import FreqlineComponent from '../freqline.component/FreqlineComponent';
+import useFetching from "../../utils/useFetching"
+import LoadingView from "../../views/LoadingView";
+import NoInternetConnectionView from "../../views/NoInternetConnectionView";
+import FreqlineComponent from "../freqline.component/FreqlineComponent";
+import { netInfoStartCheck } from './netInfoSlice';
 
-import LoadingView from '../../views/LoadingView';
-import NoInternetConnectionView from '../../views/NoInternetConnectionView';
 
-export default class MainComponent extends Component {
+const MainComponent = ({ netInfo, netInfoStartCheck }) => {
+    useFetching(netInfoStartCheck);
 
-    state = {
-        isLoading: true,
-        isConnected: null,
+    const { isLoading, isConnected } = netInfo;
+
+    if (isLoading) {
+        return (<LoadingView />);
     }
 
-    render() {
-        const { isLoading, isConnected } = this.state;
-        if (isLoading) {
-            return (
-                <LoadingView/>
-            );
-        } 
-        
-        if (isConnected == null) {
-            return (
-                <NoInternetConnectionView />
-            );
-        }
-
-        return (
-            <FreqlineComponent/>
-        );
+    if (!isConnected) {
+        return (<NoInternetConnectionView />);
     }
 
-    componentDidMount() {
-         NetInfo.fetch().then(state => {
-             this.setState({isConnected: state.isConnected, isLoading: false});
-         });
-    }
-
+    return (<FreqlineComponent />);
 }
+
+MainComponent.prototype = {
+    netInfo: PropTypes.object.isRequired,
+    netInfoStartCheck: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+    netInfo: state.netInfo,
+})
+
+const mapDispatchToProps = { netInfoStartCheck }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(MainComponent);
