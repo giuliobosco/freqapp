@@ -7,12 +7,7 @@ import NotFreqlineError from '../../views/NotFreqlineError';
 import CenteredTextView from '../../views/CenteredTextView';
 import { freqlineStatusStartCheck } from './freqlineStatusSlice';
 
-const useFetching = fetchAction => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchAction());
-    }, [])
-}
+import useFetching from '../../utils/useFetching';
 
 const FreqlineComponent = ({freqlineStatus, freqlineStatusStartCheck}) => {
 
