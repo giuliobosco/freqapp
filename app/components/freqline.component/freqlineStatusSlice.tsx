@@ -17,7 +17,7 @@ const freqlineStatusSlice = createSlice({
         },
         freqlineStatusSuccessCheck: (state, action) => {
             state.isLoading = false;
-            if (action == null) {
+            if (action.payload == null) {
                 state.error = 'no data';
                 return state;
             }
