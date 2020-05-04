@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Text, Alert } from 'react-native';
 
-import LoadingView from '../views/LoadingView';
-import NotFreqlineError from '../views/NotFreqlineError';
+import LoadingView from '../../views/LoadingView';
+import NotFreqlineError from '../../views/NotFreqlineError';
 
-import freqlineService from '../services/FreqlineService';
-import CenteredTextView from '../views/CenteredTextView';
+import freqlineService from '../../services/FreqlineService';
+import CenteredTextView from '../../views/CenteredTextView';
 
 
 export default class FreqlineComponent extends Component {
