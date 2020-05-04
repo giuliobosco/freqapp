@@ -1,87 +1,63 @@
-import React, { Component } from 'react';
-import { Text, Alert } from 'react-native';
+import React, { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types'
 
 import LoadingView from '../../views/LoadingView';
 import NotFreqlineError from '../../views/NotFreqlineError';
-
-import freqlineService from '../../services/FreqlineService';
 import CenteredTextView from '../../views/CenteredTextView';
+import { freqlineStatusStartCheck } from './freqlineStatusSlice';
 
-
-export default class FreqlineComponent extends Component {
-
-    state = {
-        isLoading: true,
-        error: false,
-        freqline: false,
-        serial: false,
-        db: false,
-    }
-
-    render() {
-        const {isLoading } = this.state;
-        if (isLoading) {
-            return (
-                <LoadingView/>
-            );
-        }
-
-        const { error } = this.state;
-
-        if (error) {
-            return (
-                <NotFreqlineError/>
-            );
-        }
-
-        const {freqline} = this.state;
-
-        if (!freqline) {
-            return (
-                <NotFreqlineError/>
-            );
-        }
-
-        const {serial} = this.state;
-
-        if (!serial) {
-            return (
-                <CenteredTextView text={'Freqline Internal Error\nSerial Communication Error'}/>
-            );
-        }
-
-        const { db } = this.state;
-
-        if (!db) {
-            return (
-                <CenteredTextView text={'Freqline Internal Error\nDatabase connection error'}/>
-            );
-        }
-
-        return (
-            <CenteredTextView text={'Freqline'}/>
-        );
-    }
-
-    componentDidMount() {
-        freqlineService()
-        .then(response => response.json())
-        .then(response => {
-            if (response.freqline != null) {
-                this.setState({freqline: response.freqline});
-            }
-            if (response.serial != null) {
-                this.setState({serial: response.serial});
-            }
-            if (response.db != null) {
-                this.setState({db: response.db});
-            }
-
-            this.setState({isLoading: false});
-        })
-        .catch(error => {
-            this.setState({error: true, isLoading: false})
-        })
-    }
-
+const useFetching = fetchAction => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchAction());
+    }, [])
 }
+
+const FreqlineComponent = ({freqlineStatus, freqlineStatusStartCheck}) => {
+
+    useFetching(freqlineStatusStartCheck)
+
+    const { isLoading, error, freqlineOk, serialOk, dbOk } = freqlineStatus;
+
+    if (isLoading) {
+        return (<LoadingView/>);
+    }
+
+    if (error) {
+        return (<NotFreqlineError/>)
+    }
+
+    if (!freqlineOk) {
+        return (<NotFreqlineError/>)
+    }
+
+    if (!serialOk) {
+        return (<CenteredTextView text={'Freqline Internal Error\nSerial Communication Error'}/>)
+    }
+
+    if (!dbOk) {
+        return (<CenteredTextView text={'Freqline Internal Error\nDatabase connection error'}/>)
+    }
+
+    return (
+        <CenteredTextView text={'Freqline'}/>
+    );
+}
+
+FreqlineComponent.prototype = {
+    freqlineStatus: PropTypes.object.isRequired,
+    freqlineStatusStartCheck: PropTypes.func.isRequired,
+}
+
+
+const mapStateToProps = state => ({
+    freqlineStatus: state.freqlineStatus
+})
+
+const mapDispatchToProps = { freqlineStatusStartCheck };
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(FreqlineComponent);
