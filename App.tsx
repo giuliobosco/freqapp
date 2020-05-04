@@ -4,7 +4,9 @@ import { Provider } from 'react-redux';
 
 import MainComponent from './app/components/main.component/MainComponent'
 import rootReducer from './app/reducers';
+
 import freqlineStatusMiddleware from './app/middlewares/freqlineStatusMiddleware';
+import netInfoMiddleware from './app/middlewares/netInfoMiddleware';
 
 export default class App extends Component { 
 
@@ -14,6 +16,7 @@ export default class App extends Component {
       middleware: [
         ...getDefaultMiddleware(),
         freqlineStatusMiddleware,
+        netInfoMiddleware,
       ]
     });
 
