@@ -1,17 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import FreqlineStatus from '../../models/FreqlineStatus';
 
-export const FreqlineStatus = {
-    freqlineOk: false,
-    serialOk: false,
-    dbOk: false,
-    isLoading: false,
-    error: '',
-}
-
 const freqlineStatusSlice = createSlice({
     name: 'freqlineStatus',
-    initialState: FreqlineStatus,
+    initialState: {
+        freqlineOk: false,
+        serialOk: false,
+        dbOk: false,
+        isLoading: false,
+        error: '',
+    },
     reducers: {
         freqlineStatusStartCheck: state => {
             state.isLoading = true;
