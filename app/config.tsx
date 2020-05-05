@@ -14,3 +14,17 @@ export default class Config {
         }
     }
 }
+
+const Colors = {
+    WHITE: '#FFFFFF',
+    LLLIGHT_GRAY: '#efefef',
+    LLIGHT_GRAY: '#BBBBBB',
+    LIGHT_GRAY: '#CCCCCC',
+    GRAY: '#777777',
+    LLIGHT_BLUE: '#2196F3',
+    LIGHT_BLUE: '#2F80ED',
+    BLUE: '#0090c2',
+    WHITE07: 'rgba(255,255,255,0.7)'
+}
+
+export { Colors };
