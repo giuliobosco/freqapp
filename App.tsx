@@ -7,6 +7,8 @@ import rootReducer from './app/reducers';
 
 import freqlineStatusMiddleware from './app/middlewares/freqlineStatusMiddleware';
 import netInfoMiddleware from './app/middlewares/netInfoMiddleware';
+import isLoggedInMiddleware from './app/middlewares/isLoggedInMiddleware';
+import loginMiddleware from './app/middlewares/loginMiddleware';
 
 export default class App extends Component { 
 
@@ -17,6 +19,8 @@ export default class App extends Component {
         ...getDefaultMiddleware(),
         freqlineStatusMiddleware,
         netInfoMiddleware,
+        isLoggedInMiddleware,
+        loginMiddleware,
       ]
     });
 
