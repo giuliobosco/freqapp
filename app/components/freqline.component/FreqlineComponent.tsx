@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
+import LoginComponent from '../login.component/LoginComponent';
 import LoadingView from '../../views/LoadingView';
 import NotFreqlineError from '../../views/NotFreqlineError';
 import CenteredTextView from '../../views/CenteredTextView';
@@ -36,7 +37,7 @@ const FreqlineComponent = ({ freqlineStatus, freqlineStatusStartCheck }) => {
     }
 
     return (
-        <CenteredTextView text={'Freqline'} />
+        <LoginComponent />
     );
 }
 
