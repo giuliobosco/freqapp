@@ -1,24 +1,67 @@
 import React from 'react';
-import { Alert } from 'react-native';
+import PropTypes from 'prop-types'
 
 import LoginView from '../components/LoginView';
+import {
+    loginStartCheck,
+    loginButtonClicked,
+    loginUsernameChanged,
+    loginPasswordChanged
+} from '../reducers/loginSlice';
+import useFetching from '../utils/useFetching';
+import LoadingView from '../components/LoadingView';
+import CenteredTextView from '../components/CenteredTextView';
+import { connect } from 'react-redux';
 
-const LoginComponent = () => {
+const LoginComponent = ({ login, loginStartCheck, loginButtonClicked, loginUsernameChanged, loginPasswordChanged }: any) => {
 
-    const viewProps = {
-        usernameChanged: (username: string) => {
-            console.log(username)
-        },
-        passwordChanged: (password: string) => {
-            console.log(password)
-        },
-        buttonClicked: () => {
-            console.log('click')
-            Alert.alert('clicked')
-        }
+    useFetching(loginStartCheck);
+
+    const { isLoading, isLoggedIn, buttonClicked, error } = login;
+
+    if (isLoading) {
+        return (<LoadingView />);
     }
 
-    return (<LoginView {...viewProps} />);
+    if (!isLoggedIn) {
+        const viewProps = {
+            usernameChanged: (username: string) => {
+                loginUsernameChanged(username)
+            },
+            passwordChanged: (password: string) => {
+                loginPasswordChanged(password)
+            },
+            buttonClicked: () => {
+                loginButtonClicked()
+            }
+        }
+
+        return (<LoginView {...viewProps} />);
+    }
+
+    return (<CenteredTextView text={'Freq helo'} />);
 }
 
-export default LoginComponent;
+LoginComponent.prototype = {
+    login: PropTypes.object.isRequired,
+    loginStartCheck: PropTypes.func.isRequired,
+    loginButtonClicked: PropTypes.func.isRequired,
+    loginUsernameChanged: PropTypes.func.isRequired,
+    loginPasswordChanged: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+    login: state.login,
+})
+
+const mapDispatchToProps = {
+    loginStartCheck,
+    loginButtonClicked,
+    loginUsernameChanged,
+    loginPasswordChanged,
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(LoginComponent);

@@ -5,14 +5,10 @@ const getLoginUrl = () => {
 }
 
 const loginService = (username: string, password: string): Promise<any> => {
-    const params:string = '?username=' + username + '&password=' + password;
+    const params: string = '?username=' + username + '&password=' + password;
     const req = getLoginUrl() + params;
 
     return fetch(req, Config.getHeaders('POST')).then(response => {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-
         return response.json()
     }).then(json => json);
 }
@@ -21,10 +17,6 @@ const isLoggedInService = (): Promise<any> => {
     const req = getLoginUrl();
 
     return fetch(req, Config.getHeaders('GET')).then(response => {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-
         return response.json();
     }).then(json => json);
 }
@@ -33,10 +25,6 @@ const getPermissionsService = (): Promise<any> => {
     const req = getLoginUrl() + '/permissions';
 
     return fetch(req, Config.getHeaders('GET')).then(response => {
-        if (!response.ok) {
-            throw Error(response.statusText);
-        }
-
         return response.json();
     }).then(json => json);
 }
