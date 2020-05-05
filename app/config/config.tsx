@@ -26,7 +26,8 @@ const Colors = {
     LLIGHT_BLUE: '#2196F3',
     LIGHT_BLUE: '#2F80ED',
     BLUE: '#0090c2',
-    WHITE07: 'rgba(255,255,255,0.7)'
+    WHITE07: 'rgba(255,255,255,0.7)',
+    RED: '#cc0000',
 }
 
 export { Colors };
