@@ -1,4 +1,4 @@
-import Config from "../config";
+import Config from "../config/config";
 
 const getLoginUrl = () => {
     return Config.getApiBase() + 'action/login';

@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 
-import Config from '../config';
+import Config from '../config/config';
 import { loginService, isLoggedInService, getPermissionsService } from './AuthenticationService';
 
 describe('Service::AuthenticationService::loginService', () => {

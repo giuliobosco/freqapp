@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import login, {
     loginStartCheck,
     loginSuccessCheck,
@@ -6,7 +8,6 @@ import login, {
     loginPasswordChanged,
     loginButtonClicked
 } from './loginSlice';
-import _ from 'lodash';
 
 const initState = {
     isLoading: false,

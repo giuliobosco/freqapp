@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import FreqlineStatus from '../../models/FreqlineStatus';
+
+import FreqlineStatus from '../models/FreqlineStatus';
 
 const freqlineStatusSlice = createSlice({
     name: 'freqlineStatus',

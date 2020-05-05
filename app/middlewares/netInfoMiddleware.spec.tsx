@@ -1,5 +1,5 @@
 import netInfoMiddleware from './netInfoMiddleware';
-import { netInfoStartCheck } from '../components/main.component/netInfoSlice';
+import { netInfoStartCheck } from '../reducers/netInfoSlice';
 
 const create = () => {
     const store = {

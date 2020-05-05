@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 
-import useFetching from "../../utils/useFetching"
-import LoadingView from "../../views/LoadingView";
-import NoInternetConnectionView from "../../views/NoInternetConnectionView";
-import FreqlineComponent from "../freqline.component/FreqlineComponent";
-import { netInfoStartCheck } from './netInfoSlice';
+import useFetching from "../utils/useFetching"
+import LoadingView from "../components/LoadingView";
+import NoInternetConnectionView from "../components/NoInternetConnectionView";
+import FreqlineComponent from "./FreqlineComponent";
+import { netInfoStartCheck } from '../reducers/netInfoSlice';
 
 
 const MainComponent = ({ netInfo, netInfoStartCheck }) => {

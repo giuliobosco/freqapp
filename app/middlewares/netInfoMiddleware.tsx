@@ -3,7 +3,7 @@ import NetInfo from '@react-native-community/netinfo';
 import {
     netInfoStartCheck,
     netInfoSuccessCheck
-} from '../components/main.component/netInfoSlice'
+} from '../reducers/netInfoSlice';
 
 export default function netInfoMiddleware({ dispatch }) {
     return function (next) {

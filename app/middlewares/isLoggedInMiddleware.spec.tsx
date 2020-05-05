@@ -5,8 +5,8 @@ import {
     loginStartCheck,
     loginSuccessCheck,
     loginErrorCheck
-} from '../components/login.component/loginSlice';
-import Config from '../config';
+} from '../reducers/loginSlice';
+import Config from '../config/config';
 
 const create = () => {
     const store = {

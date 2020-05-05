@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
-import LoginComponent from '../login.component/LoginComponent';
-import LoadingView from '../../views/LoadingView';
-import NotFreqlineError from '../../views/NotFreqlineError';
-import CenteredTextView from '../../views/CenteredTextView';
-import { freqlineStatusStartCheck } from './freqlineStatusSlice';
+import LoginComponent from './LoginComponent';
+import LoadingView from '../components/LoadingView';
+import NotFreqlineError from '../components/NotFreqlineError';
+import CenteredTextView from '../components/CenteredTextView';
+import { freqlineStatusStartCheck } from '../reducers/freqlineStatusSlice';
 
-import useFetching from '../../utils/useFetching';
+import useFetching from '../utils/useFetching';
 
 const FreqlineComponent = ({ freqlineStatus, freqlineStatusStartCheck }) => {
 

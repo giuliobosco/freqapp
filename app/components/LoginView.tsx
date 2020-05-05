@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Text, TextInput } from "react-native";
 import PropTypes from 'prop-types'
 
-import LoginButton from '../components/LoginButton';
+import LoginButton from './LoginButton';
 
 const LoginView = ({usernameChanged, passwordChanged, buttonClicked, error}:any) => {
     const year = new Date().getFullYear().toString();

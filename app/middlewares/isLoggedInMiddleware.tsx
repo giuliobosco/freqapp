@@ -2,7 +2,7 @@ import {
     loginStartCheck,
     loginSuccessCheck,
     loginErrorCheck,
-} from '../components/login.component/loginSlice';
+} from '../reducers/loginSlice';
 import { isLoggedInService } from '../services/AuthenticationService';
 
 const isLoggedInMiddleware = ({dispatch}:any) => (next:any) => (action:any) => {

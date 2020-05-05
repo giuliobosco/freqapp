@@ -6,7 +6,7 @@ import FreqlineComponent from './FreqlineComponent';
 import LoadingView from '../views/LoadingView';
 import NoInternetConnectionView from '../views/NoInternetConnectionView';
 import loginService from '../services/LoginService';
-import LoginView from '../../views/LoginView';
+import LoginView from '../components/LoginView';
 
 const LoginComponent = () => {
 

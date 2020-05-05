@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types'
 
-import { Colors } from '../config';
+import { Colors } from '../config/config';
 
 
 const LoginButton = ({text, onPress}:any) => {

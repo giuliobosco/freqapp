@@ -1,5 +1,6 @@
-import freqlineStatus, { freqlineStatusStartCheck, freqlineStatusSuccessCheck, freqlineStatusErrorCheck } from './freqlineStatusSlice';
 import _ from 'lodash';
+
+import freqlineStatus, { freqlineStatusStartCheck, freqlineStatusSuccessCheck, freqlineStatusErrorCheck } from './freqlineStatusSlice';
 
 const initState = {
     freqlineOk: false,

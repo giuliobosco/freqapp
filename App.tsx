@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 
-import MainComponent from './app/components/main.component/MainComponent'
+import MainComponent from './app/screens/MainComponent'
 import rootReducer from './app/reducers';
 
 import freqlineStatusMiddleware from './app/middlewares/freqlineStatusMiddleware';
