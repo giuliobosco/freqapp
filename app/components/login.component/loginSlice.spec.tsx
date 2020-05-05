@@ -1,4 +1,11 @@
-import login, { loginStartCheck, loginSuccessCheck, loginErrorCheck, loginUsernameChanged, loginPasswordChanged } from './loginSlice';
+import login, {
+    loginStartCheck,
+    loginSuccessCheck,
+    loginErrorCheck,
+    loginUsernameChanged,
+    loginPasswordChanged,
+    loginButtonClicked
+} from './loginSlice';
 import _ from 'lodash';
 
 const initState = {
@@ -116,6 +123,15 @@ describe('Reducer::login', () => {
         expect(login(previousState, {
             type: loginPasswordChanged,
             payload: password
+        })).toEqual(state);
+    })
+
+    it('should handle loginButtonClicked', () => {
+        const state = _.clone(initState);
+        state.isLoading = true;
+
+        expect(login(undefined, {
+            type: loginButtonClicked,
         })).toEqual(state);
     })
 })

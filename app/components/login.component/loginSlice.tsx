@@ -34,6 +34,10 @@ const loginSlice = createSlice({
         loginPasswordChanged: (state, action) => {
             state.password = action.payload;
             return state;
+        },
+        loginButtonClicked: state => {
+            state.isLoading = true;
+            return state;
         }
     }
 })
@@ -44,6 +48,7 @@ export const {
     loginErrorCheck,
     loginUsernameChanged,
     loginPasswordChanged,
+    loginButtonClicked,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;
