@@ -1,7 +1,7 @@
 import Config from '../config/config';
 
 export default function freqlineService() {
-    return fetch(Config.getApiBase() + 'action/freqline', {
+    return fetch(Config.getApiBase('action/freqline'), {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

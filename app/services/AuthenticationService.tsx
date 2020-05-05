@@ -1,11 +1,12 @@
 import Config from "../config/config";
 
 const getLoginUrl = () => {
-    return Config.getApiBase() + 'action/login';
+    return Config.getApiBase('action/login');
 }
 
 const loginService = (username: string, password: string): Promise<any> => {
-    const req = getLoginUrl() + '?username=' + username + '&password=' + password;
+    const params:string = '?username=' + username + '&password=' + password;
+    const req = getLoginUrl() + params;
 
     return fetch(req, Config.getHeaders('POST')).then(response => {
         if (!response.ok) {

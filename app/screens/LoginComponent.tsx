@@ -14,7 +14,7 @@ const LoginComponent = () => {
         usernameChanged: (username:string) => {
             console.log(username)
         },
-        passwordChanged: (password) => {
+        passwordChanged: (password:string) => {
             Alert.alert(password);
         },
         buttonClicked: () => {

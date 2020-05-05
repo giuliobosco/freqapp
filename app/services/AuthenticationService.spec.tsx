@@ -11,8 +11,8 @@ describe('Service::AuthenticationService::loginService', () => {
     }
     const err_status = 401;
 
-    const ok_url = Config.getApiBase() + 'action/login?username=admin&password=123qwe';
-    const err_url = Config.getApiBase() + 'action/login?username=hello&password=world';
+    const ok_url = Config.getApiBase('action/login?username=admin&password=123qwe');
+    const err_url = Config.getApiBase('action/login?username=hello&password=world');
     
     const name = 'loginService';
     
@@ -99,8 +99,8 @@ describe('Service::AuthenticationService::isLoggedInService', () => {
     }
     const err_status = 401;
 
-    const ok_url = Config.getApiBase() + 'action/login';
-    const err_url = Config.getApiBase() + 'action/login';
+    const ok_url = Config.getApiBase('action/login');
+    const err_url = Config.getApiBase('action/login');
     
     const name = 'isLoggedIn';
     const req_type = 'GET';
@@ -189,8 +189,8 @@ describe('Service::AuthenticationService::getPermissionsService', () => {
     }
     const err_status = 401;
 
-    const ok_url = Config.getApiBase() + 'action/login/permissions';
-    const err_url = Config.getApiBase() + 'action/login/permissions';
+    const ok_url = Config.getApiBase('action/login/permissions');
+    const err_url = Config.getApiBase('action/login/permissions');
     
     const name = 'getPermissions';
     const req_type = 'GET';

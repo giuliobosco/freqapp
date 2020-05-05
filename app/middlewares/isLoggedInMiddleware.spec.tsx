@@ -20,7 +20,7 @@ const create = () => {
 }
 
 describe('Middleware::isLoggedInMiddleware', () => {
-    
+
     it('calls test with casual action', () => {
         const { next, invoke } = create();
         const action = { type: 'Test' };
@@ -54,7 +54,7 @@ describe('Middleware::isLoggedInMiddleware', () => {
 
     it('should be called with loginErrorCheck', () => {
         const { next, invoke } = create();
-        const error = 'Eroor'+Math.random();
+        const error = 'Eroor' + Math.random();
         const action = {
             type: loginErrorCheck.toString(),
             payload: error

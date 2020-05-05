@@ -10,7 +10,7 @@ import { freqlineStatusStartCheck } from '../reducers/freqlineStatusSlice';
 
 import useFetching from '../utils/useFetching';
 
-const FreqlineComponent = ({ freqlineStatus, freqlineStatusStartCheck }) => {
+const FreqlineComponent = ({ freqlineStatus, freqlineStatusStartCheck }:any) => {
 
     useFetching(freqlineStatusStartCheck)
 

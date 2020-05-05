@@ -4,6 +4,9 @@ import Config from '../config/config'
 import freqlineService from './FreqlineService';
 
 describe('Service::FreqlineService', () => {
+
+    const url = Config.getApiBase('action/freqline');
+
     // testing getApiBase Get freqlineStatus
     it('should call api and return JSON', () => {
         const response = {
@@ -14,7 +17,7 @@ describe('Service::FreqlineService', () => {
 
         fetchMock.mock({
             name: 'action/freqline/ok',
-            matcher: Config.getApiBase() + 'action/freqline',
+            matcher: url,
             method: 'GET',
             response: {
                 status: 200,
@@ -31,7 +34,7 @@ describe('Service::FreqlineService', () => {
     it('should call thenFunction and should\'t call catchFunction', async () => {
         fetchMock.mock({
             name: 'action/freqline/ok_methods',
-            matcher: Config.getApiBase() + 'action/freqline',
+            matcher: url,
             method: 'GET',
             response: {
                 status: 200,
@@ -59,7 +62,7 @@ describe('Service::FreqlineService', () => {
 
         fetchMock.mock({
             name: 'action/freqline/no',
-            matcher: Config.getApiBase() + 'action/freqline',
+            matcher: url,
             method: 'GET',
             response: {
                 status: status,
@@ -76,7 +79,7 @@ describe('Service::FreqlineService', () => {
     it('should\'t call thenFunction and should call catchFunction', async () => {
         fetchMock.mock({
             name: 'action/freqline/not_methods',
-            matcher: Config.getApiBase() + 'action/freqline',
+            matcher: url,
             method: 'GET',
             response: {
                 status: 400,

@@ -3,7 +3,7 @@ import netInfo, { netInfoStartCheck, netInfoSuccessCheck } from './netInfoSlice'
 describe('Reducer::netInfo', () => {
     // testing initial reducer state
     it('should handle initial state', () => {
-        expect(netInfo(undefined, {})).toEqual({ isLoading: false, isConnected: false })
+        expect(netInfo(undefined, { type: null })).toEqual({ isLoading: false, isConnected: false })
     })
 
     // testing netInfoStartCheck action 

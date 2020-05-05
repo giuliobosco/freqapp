@@ -9,7 +9,7 @@ import FreqlineComponent from "./FreqlineComponent";
 import { netInfoStartCheck } from '../reducers/netInfoSlice';
 
 
-const MainComponent = ({ netInfo, netInfoStartCheck }) => {
+const MainComponent = ({ netInfo, netInfoStartCheck }:any) => {
     useFetching(netInfoStartCheck);
 
     const { isLoading, isConnected } = netInfo;
@@ -30,7 +30,7 @@ MainComponent.prototype = {
     netInfoStartCheck: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state:any) => ({
     netInfo: state.netInfo,
 })
 

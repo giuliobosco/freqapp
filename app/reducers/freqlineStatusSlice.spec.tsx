@@ -12,7 +12,7 @@ const initState = {
 
 describe('Reducer::freqlineStatus', () => {
     it('should handle reducer state', () => {
-        expect(freqlineStatus(undefined, {})).toEqual(initState);
+        expect(freqlineStatus(undefined, { type: null })).toEqual(initState);
     })
 
     it('should handle freqlineStatusStartCheck', () => {

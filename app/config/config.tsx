@@ -1,16 +1,18 @@
 export default class Config {
-    public static getApiBase():string {
-        return "http://10.8.16.155:8080/"
+    public static getApiBase(api?: string): string {
+        const baseUrl = "http://10.8.16.155:8080/";
+
+        return api != null ? baseUrl + api : baseUrl;
     }
 
-    public static getHeaders(requestType:string, body?:object):object {
-        
+    public static getHeaders(requestType: string, body?: object): object {
+
         return {
             method: requestType,
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: (body!=null?JSON.stringify(body):null),
+            body: (body != null ? JSON.stringify(body) : null),
         }
     }
 }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Colors } from '../config/config';
 
 
-const LoginButton = ({text, onPress}:any) => {
+const LoginButton = ({ text, onPress }: any) => {
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
             <Text style={styles.text}>{text}</Text>

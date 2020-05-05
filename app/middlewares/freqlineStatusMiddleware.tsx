@@ -5,9 +5,9 @@ import {
 } from '../reducers/freqlineStatusSlice'
 import freqlineService from '../services/FreqlineService';
 
-export default function freqlineStatusMiddleware({ dispatch }) {
-    return function (next) {
-        return function (action) {
+export default function freqlineStatusMiddleware({ dispatch }: any) {
+    return function (next: any) {
+        return function (action: any) {
             switch (action.type) {
                 case freqlineStatusStartCheck.toString():
                     freqlineService().then(json => {

@@ -30,7 +30,7 @@ const getRandomUsernameAndPassowrd = () => {
 
 describe('Reducer::login', () => {
     it('should handle reducer state', () => {
-        expect(login(undefined, {})).toEqual(initState);
+        expect(login(undefined, { type: null })).toEqual(initState);
     })
 
     it('should handle loginStartCheck', () => {
