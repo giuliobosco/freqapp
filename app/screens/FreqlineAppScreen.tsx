@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
-import LoginComponent from './LoginComponent';
+import LoginComponent from './LoginScreen';
 import LoadingView from '../components/LoadingView';
 import NotFreqlineError from '../components/NotFreqlineError';
 import CenteredTextView from '../components/CenteredTextView';

@@ -17,6 +17,7 @@ Using managed workflow with typescript
   - redux testing (jest -> config, setup)
 - NetInfo
 - Learn React navigation https://reactnavigation.org/docs/getting-started/
+- Login View design https://medium.com/@mmazzarolo/the-starter-app-introduction-3ead074cc589
 
 
 ## remember

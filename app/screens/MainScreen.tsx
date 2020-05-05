@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import useFetching from "../utils/useFetching"
 import LoadingView from "../components/LoadingView";
 import NoInternetConnectionView from "../components/NoInternetConnectionView";
-import FreqlineComponent from "./FreqlineComponent";
+import FreqlineComponent from "./FreqlineAppScreen";
 import { netInfoStartCheck } from '../reducers/netInfoSlice';
 
 

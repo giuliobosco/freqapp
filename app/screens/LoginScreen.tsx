@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
 
-import FreqlineComponent from './FreqlineComponent';
+import FreqlineComponent from './FreqlineAppScreen';
 
 import LoadingView from '../views/LoadingView';
 import NoInternetConnectionView from '../views/NoInternetConnectionView';
