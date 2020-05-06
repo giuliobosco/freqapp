@@ -12,6 +12,7 @@ import netInfoMiddleware from './app/middlewares/netInfoMiddleware';
 import isLoggedInMiddleware from './app/middlewares/isLoggedInMiddleware';
 import loginMiddleware from './app/middlewares/loginMiddleware';
 import permissionsMiddleware from './app/middlewares/permissionsMiddleware';
+import { Colors } from './app/config/config';
 
 export default class App extends Component { 
 
@@ -31,7 +32,7 @@ export default class App extends Component {
     return(
       <SafeAreaProvider>
         <Provider store={store}>
-          <StatusBar backgroundColor={'red'} barStyle={'dark-content'} translucent={false} />
+          <StatusBar backgroundColor={Colors.WHITE} barStyle={'dark-content'} translucent={false} />
           <MainComponent/>
         </Provider>
       </SafeAreaProvider>
