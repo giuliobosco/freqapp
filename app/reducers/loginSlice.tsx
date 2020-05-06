@@ -2,17 +2,19 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const permisisons:string[] = [];
 
+const initialState = {
+    isLoading: false,
+    isLoggedIn: false,
+    username: '',
+    password: '',
+    buttonClicked: false,
+    error: '',
+    permissions: permisisons,
+}
+
 const loginSlice = createSlice({
     name: 'login',
-    initialState: {
-        isLoading: false,
-        isLoggedIn: false,
-        username: '',
-        password: '',
-        buttonClicked: false,
-        error: '',
-        permissions: permisisons,
-    },
+    initialState: initialState,
     reducers: {
         loginStartCheck: state => {
             state.isLoading = true;
@@ -55,7 +57,11 @@ const loginSlice = createSlice({
             state.isLoading = false;
             state.permissions = action.payload;
             return state;
-        }
+        },
+        logout: state => {
+            state = initialState;
+            return state;
+        },
     }
 })
 
@@ -69,6 +75,7 @@ export const {
     permissionsStartCheck,
     permissionsSuccessCheck,
     permissionsErrorCheck,
+    logout,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;

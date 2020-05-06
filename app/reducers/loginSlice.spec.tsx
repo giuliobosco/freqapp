@@ -10,6 +10,7 @@ import login, {
     permissionsStartCheck,
     permissionsSuccessCheck,
     permissionsErrorCheck,
+    logout,
 } from './loginSlice';
 
 const permisisons:string[] = [];
@@ -176,5 +177,17 @@ describe('Reducer::login', () => {
             type: permissionsErrorCheck,
             payload: error,
         })).toEqual(state);
+    })
+
+    it('should handle logout', () => {
+        const state = _.clone(initState);
+        state.isLoading = false;
+        state.username = 'username';
+        state.password = 'password';
+        state.permissions = ['p0', 'p1'];
+
+        expect(login(state, {
+            type: logout,
+        })).toEqual(initState);
     })
 })
