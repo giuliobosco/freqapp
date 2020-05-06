@@ -6,16 +6,21 @@ import login, {
     loginErrorCheck,
     loginUsernameChanged,
     loginPasswordChanged,
-    loginButtonClicked
+    loginButtonClicked,
+    permissionsStartCheck,
+    permissionsSuccessCheck,
+    permissionsErrorCheck,
 } from './loginSlice';
 
+const permisisons:string[] = [];
 const initState = {
     isLoading: false,
     isLoggedIn: false,
     username: '',
     password: '',
     buttonClicked: false,
-    error: ''
+    error: '',
+    permissions: permisisons,
 }
 
 const getRandomUsernameAndPassowrd = () => {
@@ -133,6 +138,43 @@ describe('Reducer::login', () => {
 
         expect(login(undefined, {
             type: loginButtonClicked,
+        })).toEqual(state);
+    })
+
+    it('should handle permissionStartCheck', () => {
+        const state = _.clone(initState);
+        state.isLoading = true;
+
+        expect(login(undefined, {
+            type: permissionsStartCheck,
+        })).toEqual(state);
+    })
+
+    it('should handle permissionSuccessCheck', () => {
+        const previusState = _.clone(initState);
+        previusState.isLoading = true;
+        
+        const permissions = ['p1'+Math.random(), 'p2'+Math.random()];
+        const state = _.clone(initState);
+        state.permissions = permissions;
+
+        expect(login(previusState, {
+            type: permissionsSuccessCheck,
+            payload: permissions,
+        })).toEqual(state);
+    })
+
+    it('should handle permissionsErrorCheck', () => {
+        const previusState = _.clone(initState);
+        previusState.isLoading = true;
+
+        const error = 'Error'+Math.random();
+        const state = _.clone(initState);
+        state.error = error;
+
+        expect(login(previusState, {
+            type: permissionsErrorCheck,
+            payload: error,
         })).toEqual(state);
     })
 })
