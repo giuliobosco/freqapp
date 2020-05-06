@@ -12,7 +12,7 @@ import {
 } from '../reducers/loginSlice';
 import useFetching from '../utils/useFetching';
 import LoadingView from '../components/LoadingView';
-import CenteredTextView from '../components/CenteredTextView';
+import MainNavigationManager from '../navigation/MainNavigationManager';
 
 const LoginComponent = ({ login, loginStartCheck, loginButtonClicked, loginUsernameChanged, loginPasswordChanged }: any) => {
 
@@ -40,7 +40,7 @@ const LoginComponent = ({ login, loginStartCheck, loginButtonClicked, loginUsern
         return (<LoginView {...viewProps} error={error} />);
     }
 
-    return (<CenteredTextView text={'Freq helo'} />);
+    return (<MainNavigationManager />);
 }
 
 LoginComponent.prototype = {

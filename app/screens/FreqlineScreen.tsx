@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function () {
     return (
         <View style={styles.container}>
-            <Text>Unauthorized</Text>
+            <Text>Freqline</Text>
         </View>
     )
 }

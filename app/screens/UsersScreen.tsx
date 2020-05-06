@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function () {
+export default function ({ navigation }:any) {
     return (
         <View style={styles.container}>
-            <Text>Unauthorized</Text>
+            <Text>Users</Text>
+            <Button title="Go to user" onPress={() => navigation.navigate('User')} />
         </View>
     )
 }
