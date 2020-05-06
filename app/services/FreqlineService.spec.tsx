@@ -8,8 +8,8 @@ describe('Service::FreqlineService', () => {
     const url = Config.getApiBase('action/freqline');
 
     // testing getApiBase Get freqlineStatus
-    it('should call api and return JSON', () => {
-        const response = {
+    it('should call api and return JSON', async () => {
+        const body = {
             freqline: true,
             serial: true,
             db: true
@@ -21,12 +21,12 @@ describe('Service::FreqlineService', () => {
             method: 'GET',
             response: {
                 status: 200,
-                body: response
+                body
             }
         })
 
-        freqlineService().then(data => {
-            expect(data).toEqual(response)
+        await freqlineService().then(data => {
+            expect(data).toEqual(body)
             fetchMock.reset();
         })
     })
@@ -55,25 +55,6 @@ describe('Service::FreqlineService', () => {
         expect(catchFunction).not.toHaveBeenCalled();
 
         fetchMock.reset()
-    })
-
-    it('should call api and retrive an error', () => {
-        const status:number = 400;
-
-        fetchMock.mock({
-            name: 'action/freqline/no',
-            matcher: url,
-            method: 'GET',
-            response: {
-                status: status,
-                body: []
-            }
-        })
-
-        freqlineService().catch(error => {
-            expect(error.status).toEqual(status);
-            fetchMock.reset();
-        })
     })
 
     it('should\'t call thenFunction and should call catchFunction', async () => {

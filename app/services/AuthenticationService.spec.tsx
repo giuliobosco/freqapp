@@ -5,7 +5,7 @@ import { loginService, isLoggedInService, getPermissionsService, logoutService }
 
 describe('Service::AuthenticationService::loginService', () => {
 
-    const ok_response = {
+    const body = {
         status: 200,
         message: "ok"
     }
@@ -17,17 +17,17 @@ describe('Service::AuthenticationService::loginService', () => {
     const name = 'loginService';
 
     // testing loginService
-    it('should login and return 200 OK', () => {
+    it('should login and return 200 OK', async () => {
 
         fetchMock.mock({
             name: name + '/ok',
             matcher: ok_url,
             method: 'POST',
-            response: ok_response,
+            response: body,
         })
 
-        loginService('admin', '123qwe').then(data => {
-            expect(data).toEqual(ok_response);
+        await loginService('admin', '123qwe').then(data => {
+            expect(data).toEqual(body);
             fetchMock.reset();
         })
     })
@@ -37,7 +37,7 @@ describe('Service::AuthenticationService::loginService', () => {
             name: name + '/ok_func',
             matcher: ok_url,
             method: 'POST',
-            response: ok_response,
+            response: body,
         })
 
         const thenFunc = jest.fn();
@@ -51,7 +51,7 @@ describe('Service::AuthenticationService::loginService', () => {
         fetchMock.reset();
     })
 
-    it('should\'t login and return 401', () => {
+    it('should\'t login and return 401', async () => {
         fetchMock.mock({
             name: name + '/err',
             matcher: err_url,
@@ -62,7 +62,7 @@ describe('Service::AuthenticationService::loginService', () => {
             },
         })
 
-        loginService('hello', 'world').catch(error => {
+        await loginService('hello', 'world').catch(error => {
             expect(error.status).toEqual(err_status);
             fetchMock.reset();
         })
@@ -71,7 +71,7 @@ describe('Service::AuthenticationService::loginService', () => {
 
 describe('Service::AuthenticationService::isLoggedInService', () => {
 
-    const ok_response = {
+    const body = {
         status: 200,
         isLoggedIn: true
     }
@@ -84,17 +84,17 @@ describe('Service::AuthenticationService::isLoggedInService', () => {
     const req_type = 'GET';
 
     // testing loginService
-    it('should return 200 OK', () => {
+    it('should return 200 OK', async () => {
 
         fetchMock.mock({
             name: name + '/ok',
             matcher: ok_url,
             method: req_type,
-            response: ok_response,
+            response: body,
         })
 
-        isLoggedInService().then(data => {
-            expect(data).toEqual(ok_response);
+        await isLoggedInService().then(data => {
+            expect(data).toEqual(body);
             fetchMock.reset();
         })
     })
@@ -104,7 +104,7 @@ describe('Service::AuthenticationService::isLoggedInService', () => {
             name: name + '/ok_func',
             matcher: ok_url,
             method: req_type,
-            response: ok_response,
+            response: body,
         })
 
         const thenFunc = jest.fn();
@@ -118,7 +118,7 @@ describe('Service::AuthenticationService::isLoggedInService', () => {
         fetchMock.reset();
     })
 
-    it('should return 401', () => {
+    it('should return 401', async () => {
         fetchMock.mock({
             name: name + '/err',
             matcher: err_url,
@@ -129,7 +129,7 @@ describe('Service::AuthenticationService::isLoggedInService', () => {
             },
         })
 
-        isLoggedInService().catch(error => {
+        await isLoggedInService().catch(error => {
             expect(error.status).toEqual(err_status);
             fetchMock.reset();
         })
@@ -138,7 +138,7 @@ describe('Service::AuthenticationService::isLoggedInService', () => {
 
 describe('Service::AuthenticationService::getPermissionsService', () => {
 
-    const ok_response = {
+    const body = {
         status: 200,
         isLoggedIn: true,
         permissions: ['admin', 'user'],
@@ -152,17 +152,17 @@ describe('Service::AuthenticationService::getPermissionsService', () => {
     const req_type = 'GET';
 
     // testing loginService
-    it('should return 200 OK and the list of the permission', () => {
+    it('should return 200 OK and the list of the permission', async () => {
 
         fetchMock.mock({
             name: name + '/ok',
             matcher: ok_url,
             method: req_type,
-            response: ok_response,
+            response: body,
         })
 
-        getPermissionsService().then(data => {
-            expect(data).toEqual(ok_response);
+        await getPermissionsService().then(data => {
+            expect(data).toEqual(body);
             fetchMock.reset();
         })
     })
@@ -172,7 +172,7 @@ describe('Service::AuthenticationService::getPermissionsService', () => {
             name: name + '/ok_func',
             matcher: ok_url,
             method: req_type,
-            response: ok_response,
+            response: body,
         })
 
         const thenFunc = jest.fn();
@@ -186,7 +186,7 @@ describe('Service::AuthenticationService::getPermissionsService', () => {
         fetchMock.reset();
     })
 
-    it('should return 401', () => {
+    it('should return 401', async () => {
         fetchMock.mock({
             name: name + '/err',
             matcher: err_url,
@@ -197,7 +197,7 @@ describe('Service::AuthenticationService::getPermissionsService', () => {
             },
         })
 
-        getPermissionsService().catch(error => {
+        await getPermissionsService().catch(error => {
             expect(error.status).toEqual(err_status);
             fetchMock.reset();
         })
@@ -206,7 +206,7 @@ describe('Service::AuthenticationService::getPermissionsService', () => {
 
 describe('Service::AuthenticationService::logoutService', () => {
 
-    const ok_response = {
+    const body = {
         status: 200,
         body: []
     }
@@ -217,17 +217,20 @@ describe('Service::AuthenticationService::logoutService', () => {
     const req_type = 'GET';
 
     // testing loginService
-    it('should return 200 OK', () => {
+    it('should return 200 OK', async () => {
 
         fetchMock.mock({
             name: name + '/ok',
             matcher: ok_url,
             method: req_type,
-            response: ok_response,
+            response: {
+                status: 200,
+                body
+            },
         })
 
-        logoutService().then(data => {
-            expect(data).toEqual(ok_response);
+        await logoutService().then(data => {
+            expect(data).toEqual(body);
             fetchMock.reset();
         })
     })
@@ -237,7 +240,7 @@ describe('Service::AuthenticationService::logoutService', () => {
             name: name + '/ok_func',
             matcher: ok_url,
             method: req_type,
-            response: ok_response,
+            response: body,
         })
 
         const thenFunc = jest.fn();
