@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
+import _ from 'lodash';
 
 import LoginView from '../components/LoginView';
 import {
     loginStartCheck,
     loginButtonClicked,
     loginUsernameChanged,
-    loginPasswordChanged
+    loginPasswordChanged,
 } from '../reducers/loginSlice';
 import useFetching from '../utils/useFetching';
 import LoadingView from '../components/LoadingView';
 import CenteredTextView from '../components/CenteredTextView';
-import { connect } from 'react-redux';
 
 const LoginComponent = ({ login, loginStartCheck, loginButtonClicked, loginUsernameChanged, loginPasswordChanged }: any) => {
 

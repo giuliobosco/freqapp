@@ -9,6 +9,7 @@ import freqlineStatusMiddleware from './app/middlewares/freqlineStatusMiddleware
 import netInfoMiddleware from './app/middlewares/netInfoMiddleware';
 import isLoggedInMiddleware from './app/middlewares/isLoggedInMiddleware';
 import loginMiddleware from './app/middlewares/loginMiddleware';
+import permissionsMiddleware from './app/middlewares/permissionsMiddleware';
 
 export default class App extends Component { 
 
@@ -21,6 +22,7 @@ export default class App extends Component {
         netInfoMiddleware,
         isLoggedInMiddleware,
         loginMiddleware,
+        permissionsMiddleware,
       ]
     });
 

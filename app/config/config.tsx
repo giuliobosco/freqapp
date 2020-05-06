@@ -30,4 +30,9 @@ const Colors = {
     RED: '#cc0000',
 }
 
-export { Colors };
+const Permissions = {
+    ADMIN: 'admin',
+    USER: 'user',
+}
+
+export { Colors, Permissions };
