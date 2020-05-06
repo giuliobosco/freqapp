@@ -32,8 +32,6 @@ const MainNavigationManager = ({ login, permissionsStartCheck }: any) => {
 
     const { isLoadingPermission, permissions } = login;
 
-    console.log(permissions);
-
     if (isLoadingPermission) {
         return (<LoadingView />);
     }
@@ -61,7 +59,6 @@ const MainNavigationManager = ({ login, permissionsStartCheck }: any) => {
                                 break;
                         }
 
-                        // You can return any component that you like here!
                         return <Ionicons name={iconName} size={size} color={color} />;
                     },
 
