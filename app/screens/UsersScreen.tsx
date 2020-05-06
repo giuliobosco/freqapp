@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ({ navigation }:any) {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Text>Users</Text>
             <Button title="Go to user" onPress={() => navigation.navigate('User')} />
-        </View>
+        </SafeAreaView>
     )
 }
 

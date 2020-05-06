@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { StatusBar } from 'react-native';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 
 import MainComponent from './app/screens/MainScreen'
@@ -27,9 +29,12 @@ export default class App extends Component {
     });
 
     return(
-      <Provider store={store}>
-        <MainComponent/>
-      </Provider>
+      <SafeAreaProvider>
+        <Provider store={store}>
+          <StatusBar backgroundColor={'red'} barStyle={'dark-content'} translucent={false} />
+          <MainComponent/>
+        </Provider>
+      </SafeAreaProvider>
     );
   }
 }
