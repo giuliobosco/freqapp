@@ -22,6 +22,7 @@ const initState = {
     buttonClicked: false,
     error: '',
     permissions: permisisons,
+    isLoadingPermissions: false,
 }
 
 const getRandomUsernameAndPassowrd = () => {
@@ -144,7 +145,7 @@ describe('Reducer::login', () => {
 
     it('should handle permissionStartCheck', () => {
         const state = _.clone(initState);
-        state.isLoading = true;
+        state.isLoadingPermissions = true;
 
         expect(login(undefined, {
             type: permissionsStartCheck,
@@ -153,7 +154,7 @@ describe('Reducer::login', () => {
 
     it('should handle permissionSuccessCheck', () => {
         const previusState = _.clone(initState);
-        previusState.isLoading = true;
+        previusState.isLoadingPermissions = true;
         
         const permissions = ['p1'+Math.random(), 'p2'+Math.random()];
         const state = _.clone(initState);
@@ -167,7 +168,7 @@ describe('Reducer::login', () => {
 
     it('should handle permissionsErrorCheck', () => {
         const previusState = _.clone(initState);
-        previusState.isLoading = true;
+        previusState.isLoadingPermissions = true;
 
         const error = 'Error'+Math.random();
         const state = _.clone(initState);

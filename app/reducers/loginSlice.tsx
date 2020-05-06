@@ -10,6 +10,7 @@ const initialState = {
     buttonClicked: false,
     error: '',
     permissions: permisisons,
+    isLoadingPermissions: false,
 }
 
 const loginSlice = createSlice({
@@ -45,16 +46,16 @@ const loginSlice = createSlice({
             return state;
         },
         permissionsStartCheck: state => {
-            state.isLoading = true;
+            state.isLoadingPermissions = true
             return state;
         },
         permissionsErrorCheck: (state, action) => {
-            state.isLoading = false;
+            state.isLoadingPermissions = false;
             state.error = action.payload;
             return state;
         },
         permissionsSuccessCheck: (state, action) => {
-            state.isLoading = false;
+            state.isLoadingPermissions = false;
             state.permissions = action.payload;
             return state;
         },
