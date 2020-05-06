@@ -18,7 +18,7 @@ Using managed workflow with typescript
 - NetInfo
 - Learn React navigation https://reactnavigation.org/docs/getting-started/
 - Login View design https://medium.com/@mmazzarolo/the-starter-app-introduction-3ead074cc589
-
+- React navigation https://reactnavigation.org/docs/getting-started
 
 ## remember
 
