@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Colors } from '../config/config';
 
 
-const LoginButton = ({ text, onPress, disabled }: any) => {
+const WideButton = ({ text, onPress, disabled }: any) => {
     const containerStyle = [
         styles.container,
         disabled
@@ -19,13 +19,13 @@ const LoginButton = ({ text, onPress, disabled }: any) => {
     );
 }
 
-LoginButton.prototype = {
+WideButton.prototype = {
     text: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
 }
 
-export default LoginButton;
+export default WideButton;
 
 const styles = StyleSheet.create({
     container: {

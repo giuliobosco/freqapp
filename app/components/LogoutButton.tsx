@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
 import { logout } from '../reducers/loginSlice';
-import LoginButton from './LoginButton';
+import WideButton from './WideButton';
 import { Strings } from '../config/string';
 
 const LogoutButton = ({logout}:any) => {
@@ -13,7 +13,7 @@ const LogoutButton = ({logout}:any) => {
     }
 
     return (
-        <LoginButton text={Strings.LOGOUT} onPress={logoutButtonPressed} />
+        <WideButton text={Strings.LOGOUT} onPress={logoutButtonPressed} />
     )
 }
 

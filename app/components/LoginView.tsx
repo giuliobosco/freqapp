@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { View, StyleSheet, Text, KeyboardAvoidingView } from "react-native";
 import PropTypes from 'prop-types'
 
-import LoginButton from './LoginButton';
+import WideButton from './WideButton';
 import { Colors } from '../config/config';
 import { Strings } from '../config/string';
 import FormTextInput from './FormTextInput';
@@ -77,7 +77,7 @@ const LoginView = ({ usernameChanged, passwordChanged, buttonClicked, error }: a
                     onBlur={handlePasswordBlur}
                     error={passwordError}/>
                 {error != null ? <Text style={styles.error}>{error}</Text> : null}
-                <LoginButton onPress={buttonClicked} text={Strings.LOGIN} disabled={!username || !password}/>
+                <WideButton onPress={buttonClicked} text={Strings.LOGIN} disabled={!username || !password}/>
                 <Text>&copy;{year} Giulio Bosco</Text>
             </View>
         </KeyboardAvoidingView>
