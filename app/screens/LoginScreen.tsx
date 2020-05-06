@@ -17,7 +17,7 @@ const LoginComponent = ({ login, loginStartCheck, loginButtonClicked, loginUsern
 
     useFetching(loginStartCheck);
 
-    const { isLoading, isLoggedIn, buttonClicked, error } = login;
+    const { isLoading, isLoggedIn, error } = login;
 
     if (isLoading) {
         return (<LoadingView />);
@@ -36,7 +36,7 @@ const LoginComponent = ({ login, loginStartCheck, loginButtonClicked, loginUsern
             }
         }
 
-        return (<LoginView {...viewProps} />);
+        return (<LoginView {...viewProps} error={error} />);
     }
 
     return (<CenteredTextView text={'Freq helo'} />);
