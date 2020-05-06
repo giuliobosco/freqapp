@@ -9,6 +9,7 @@ const Strings = {
     PASSWORD_PLACEHOLDER: 'password',
     PASSWORD_REQUIRED: 'Password is required',
     LOGIN: 'login',
+    LOGOUT: 'logout',
 }
 
 export { Strings };
