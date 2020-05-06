@@ -1,7 +1,7 @@
 import fetchMock from 'fetch-mock';
 
 import Config from '../config/config'
-import freqlineService, { statusService } from './FreqlineService';
+import freqlineService, { statusService, frequenceService } from './FreqlineService';
 
 describe('Service::FreqlineService', () => {
 
@@ -157,6 +157,89 @@ describe('Service::statusService', () => {
         })
 
         await statusService.set(true).then(data => {
+            expect(data).toEqual(body)
+            fetchMock.reset();
+        })
+    })
+})
+
+describe('Service::frequenceService', () => {
+
+    const name = 'action/generatorFrequence';
+    const url = Config.getApiBase(name);
+
+    // testing getApiBase Get freqlineStatus
+    it('frequenceService.get(): should call api and return JSON', async () => {
+        const body = { ok: true, }
+        fetchMock.mock({
+            name: name+'/get _ok',
+            matcher: url,
+            method: 'GET',
+            response: {
+                status: 200,
+                body
+            }
+        })
+
+        await frequenceService.get().then(data => {
+            expect(data).toEqual(body)
+            fetchMock.reset();
+        })
+    })
+
+    it('frequenceService.get(): should\'t call thenFunction and should call catchFunction', async () => {
+        fetchMock.mock({
+            name: name+'/get _ok_func',
+            matcher: url,
+            method: 'GET',
+            response: {
+                status: 200,
+                body: {}
+            }
+        })
+
+        const thenFunction = jest.fn();
+        const catchFunction = jest.fn();
+
+        await frequenceService.get().then(thenFunction).catch(catchFunction)
+
+        expect(thenFunction).toHaveBeenCalled();
+        expect(catchFunction).not.toHaveBeenCalled();
+
+        fetchMock.reset();
+    })
+    
+    it('frequenceService.set(): should call api with 0 as status', async () => {
+        const body = { ok: true, }
+        fetchMock.mock({
+            name: name+'/set _ok_0',
+            matcher: url+'?frequence=0',
+            method: 'POST',
+            response: {
+                status: 200,
+                body
+            }
+        })
+
+        await frequenceService.set(0).then(data => {
+            expect(data).toEqual(body)
+            fetchMock.reset();
+        })
+    })
+
+    it('frequenceService.set(): should call api with 1000 as status', async () => {
+        const body = { ok: true, }
+        fetchMock.mock({
+            name: name+'/set _ok_1',
+            matcher: url+'?frequence=1000',
+            method: 'POST',
+            response: {
+                status: 200,
+                body
+            }
+        })
+
+        await frequenceService.set(1000).then(data => {
             expect(data).toEqual(body)
             fetchMock.reset();
         })

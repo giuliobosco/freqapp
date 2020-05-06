@@ -35,4 +35,21 @@ const statusService = {
     }
 }
 
-export { statusService };
+const frequenceUrl = 'action/generatorFrequence';
+
+const frequenceService = {
+    get: () => {
+        return fetch(Config.getApiBase(frequenceUrl), GET_HEADER).then(response => {
+            return response.json();
+        }).then(json => json); 
+    },
+    set: (frequence:number) => {
+        const url = Config.getApiBase(frequenceUrl) + '?frequence=' + frequence;
+
+        return fetch(url, POST_HEADER)
+            .then(response => response.json())
+            .then(json => json);
+    }
+}
+
+export { statusService, frequenceService };
