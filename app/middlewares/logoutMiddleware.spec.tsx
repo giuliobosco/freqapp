@@ -23,8 +23,8 @@ describe('Middleware::loginMiddleware', () => {
     it('should be called next with logout', () => {
         fetchMock.mock({
             name: 'route',
-            matcher: Config.getApiBase() + 'action/login?username=hello&password=world',
-            method: 'POST',
+            matcher: Config.getApiBase('action/logout'),
+            method: 'GET',
             response: {
                 status: 200,
                 body: []

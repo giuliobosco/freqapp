@@ -1,8 +1,8 @@
-import { logout, loginButtonClicked } from '../reducers/loginSlice';
+import { logout } from '../reducers/loginSlice';
 import { logoutService } from '../services/AuthenticationService';
 
 const logoutMiddleware = () => (next:any) => (action:any) => {
-    if (action.type === loginButtonClicked.toString()) {
+    if (action.type === logout.toString()) {
         logoutService().then(() => {})
     }
 
