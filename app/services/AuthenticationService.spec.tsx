@@ -1,7 +1,7 @@
 import fetchMock from 'fetch-mock';
 
 import Config from '../config/config';
-import { loginService, isLoggedInService, getPermissionsService } from './AuthenticationService';
+import { loginService, isLoggedInService, getPermissionsService, logoutService } from './AuthenticationService';
 
 describe('Service::AuthenticationService::loginService', () => {
 
@@ -201,5 +201,53 @@ describe('Service::AuthenticationService::getPermissionsService', () => {
             expect(error.status).toEqual(err_status);
             fetchMock.reset();
         })
+    })
+})
+
+describe('Service::AuthenticationService::logoutService', () => {
+
+    const ok_response = {
+        status: 200,
+        body: []
+    }
+
+    const ok_url = Config.getApiBase('action/logout');
+
+    const name = 'logout';
+    const req_type = 'GET';
+
+    // testing loginService
+    it('should return 200 OK', () => {
+
+        fetchMock.mock({
+            name: name + '/ok',
+            matcher: ok_url,
+            method: req_type,
+            response: ok_response,
+        })
+
+        logoutService().then(data => {
+            expect(data).toEqual(ok_response);
+            fetchMock.reset();
+        })
+    })
+
+    it('should call thenFunction and should\'t call catchFunction', async () => {
+        fetchMock.mock({
+            name: name + '/ok_func',
+            matcher: ok_url,
+            method: req_type,
+            response: ok_response,
+        })
+
+        const thenFunc = jest.fn();
+        const catchFunc = jest.fn();
+
+        await logoutService().then(thenFunc).catch(catchFunc);
+
+        expect(thenFunc).toHaveBeenCalled();
+        expect(catchFunc).not.toHaveBeenCalled();
+
+        fetchMock.reset();
     })
 })

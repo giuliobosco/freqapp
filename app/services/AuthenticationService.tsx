@@ -29,4 +29,12 @@ const getPermissionsService = (): Promise<any> => {
     }).then(json => json);
 }
 
-export { loginService, isLoggedInService, getPermissionsService };
+const logoutService = (): Promise<any> => {
+    const req = Config.getApiBase('action/logout');
+
+    return fetch(req, Config.getHeaders('GET')).then(response => {
+        return response.json();
+    }).then(json => json);
+}
+
+export { loginService, isLoggedInService, getPermissionsService, logoutService };
