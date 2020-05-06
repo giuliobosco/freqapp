@@ -2,7 +2,7 @@ import {
     loginButtonClicked,
     loginSuccessCheck,
     loginErrorCheck,
-} from '../reducers/loginSlice';
+} from '../reducers/authSlice';
 import { loginService } from '../services/AuthenticationService';
 
 const loginMiddleware = ({ dispatch, getState }: any) => (next: any) => (action: any) => {

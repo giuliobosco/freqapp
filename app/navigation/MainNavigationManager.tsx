@@ -11,7 +11,7 @@ import SettingsScreen from '../screens/SettingsScreen';
 import UnauthorizedView from '../components/UnauthorizedView';
 import UsersNavigationManager from './UsersNavigationManager';
 
-import { permissionsStartCheck } from '../reducers/loginSlice';
+import { permissionsStartCheck } from '../reducers/authSlice';
 
 import { Strings } from '../config/string';
 import { Permissions } from '../config/config';
@@ -26,11 +26,11 @@ const MainTabs = {
     SETTINGS: 'Settings',
 }
 
-const MainNavigationManager = ({ login, permissionsStartCheck }: any) => {
+const MainNavigationManager = ({ auth, permissionsStartCheck }: any) => {
 
     useFetching(permissionsStartCheck)
 
-    const { isLoadingPermission, permissions } = login;
+    const { isLoadingPermission, permissions } = auth;
 
     if (isLoadingPermission) {
         return (<LoadingView />);
@@ -77,7 +77,7 @@ MainNavigationManager.prototype = {
 }
 
 const mapStateToProps = state => ({
-    login: state.login,
+    login: state.auth,
 })
 
 const mapDispatchToProps = {

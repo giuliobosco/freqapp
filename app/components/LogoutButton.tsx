@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
-import { logout } from '../reducers/loginSlice';
+import { logout } from '../reducers/authSlice';
 import WideButton from './WideButton';
 import { Strings } from '../config/string';
 

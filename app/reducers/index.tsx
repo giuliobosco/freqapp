@@ -2,10 +2,10 @@ import { combineReducers } from 'redux';
 
 import freqlineStatusReducer from './freqlineStatusSlice';
 import netInfoReducer from './netInfoSlice';
-import loginReducer from './loginSlice';
+import authReducer from './authSlice';
 
 export default combineReducers({
     freqlineStatus: freqlineStatusReducer,
     netInfo: netInfoReducer,
-    login: loginReducer
+    auth: authReducer
 })

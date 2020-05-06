@@ -13,8 +13,8 @@ const initialState = {
     isLoadingPermissions: false,
 }
 
-const loginSlice = createSlice({
-    name: 'login',
+const authSlice = createSlice({
+    name: 'auth',
     initialState: initialState,
     reducers: {
         loginStartCheck: state => {
@@ -77,6 +77,6 @@ export const {
     permissionsSuccessCheck,
     permissionsErrorCheck,
     logout,
-} = loginSlice.actions;
+} = authSlice.actions;
 
-export default loginSlice.reducer;
+export default authSlice.reducer;

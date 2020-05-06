@@ -1,7 +1,7 @@
 import fetchMock from 'fetch-mock';
 
 import logoutMiddleware from './logoutMiddleware';
-import { logout } from '../reducers/loginSlice';
+import { logout } from '../reducers/authSlice';
 import Config from '../config/config';
 
 const create = () => {

@@ -1,4 +1,4 @@
-import { logout } from '../reducers/loginSlice';
+import { logout } from '../reducers/authSlice';
 import { logoutService } from '../services/AuthenticationService';
 
 const logoutMiddleware = () => (next:any) => (action:any) => {

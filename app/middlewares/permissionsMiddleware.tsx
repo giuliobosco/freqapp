@@ -2,7 +2,7 @@ import {
     permissionsStartCheck,
     permissionsSuccessCheck,
     permissionsErrorCheck,
-} from '../reducers/loginSlice';
+} from '../reducers/authSlice';
 import { getPermissionsService } from '../services/AuthenticationService';
 
 const permissionsMiddleware = ({dispatch}:any) => (next:any) => (action:any) => {

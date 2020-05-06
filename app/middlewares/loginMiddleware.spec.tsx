@@ -5,7 +5,7 @@ import {
     loginButtonClicked,
     loginSuccessCheck,
     loginErrorCheck,
-} from '../reducers/loginSlice'
+} from '../reducers/authSlice'
 import Config from '../config/config';
 
 const create = () => {

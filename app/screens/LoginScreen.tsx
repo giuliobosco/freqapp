@@ -9,16 +9,16 @@ import {
     loginButtonClicked,
     loginUsernameChanged,
     loginPasswordChanged,
-} from '../reducers/loginSlice';
+} from '../reducers/authSlice';
 import useFetching from '../utils/useFetching';
 import LoadingView from '../components/LoadingView';
 import MainNavigationManager from '../navigation/MainNavigationManager';
 
-const LoginComponent = ({ login, loginStartCheck, loginButtonClicked, loginUsernameChanged, loginPasswordChanged }: any) => {
+const LoginComponent = ({ auth, loginStartCheck, loginButtonClicked, loginUsernameChanged, loginPasswordChanged }: any) => {
 
     useFetching(loginStartCheck);
 
-    const { isLoading, isLoggedIn, error } = login;
+    const { isLoading, isLoggedIn, error } = auth;
 
     if (isLoading) {
         return (<LoadingView />);
@@ -52,7 +52,7 @@ LoginComponent.prototype = {
 }
 
 const mapStateToProps = state => ({
-    login: state.login,
+    login: state.auth,
 })
 
 const mapDispatchToProps = {
