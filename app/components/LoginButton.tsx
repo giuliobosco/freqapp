@@ -5,9 +5,15 @@ import PropTypes from 'prop-types'
 import { Colors } from '../config/config';
 
 
-const LoginButton = ({ text, onPress }: any) => {
+const LoginButton = ({ text, onPress, disabled }: any) => {
+    const containerStyle = [
+        styles.container,
+        disabled
+            ? styles.containerDisabled
+            : styles.containerEnable,
+    ]
     return (
-        <TouchableOpacity style={styles.container} onPress={onPress}>
+        <TouchableOpacity style={containerStyle} onPress={onPress} disabled={disabled}>
             <Text style={styles.text}>{text}</Text>
         </TouchableOpacity>
     );
@@ -16,6 +22,7 @@ const LoginButton = ({ text, onPress }: any) => {
 LoginButton.prototype = {
     text: PropTypes.string.isRequired,
     onPress: PropTypes.func.isRequired,
+    disabled: PropTypes.bool,
 }
 
 export default LoginButton;
@@ -31,6 +38,12 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         borderWidth: StyleSheet.hairlineWidth,
         borderColor: Colors.WHITE07,
+    },
+    containerEnable: {
+        opacity: 1,
+    },
+    containerDisabled: {
+        opacity: 0.3,
     },
     text: {
         color: Colors.WHITE,

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { View, StyleSheet, Text, KeyboardAvoidingView } from "react-native";
 import PropTypes from 'prop-types'
 
@@ -8,14 +8,47 @@ import { Strings } from '../config/string';
 import FormTextInput from './FormTextInput';
 
 const LoginView = ({ usernameChanged, passwordChanged, buttonClicked, error }: any) => {
+    const [ username, setUsername ] = useState('')
+    const [ usernameTouched, setUsernameTouched ] = useState(false);
+    const [ password, setPassword ] = useState('');
+    const [ passwordTouched, setPasswordTouched ] = useState(false);
+
     const year = new Date().getFullYear().toString();
     const passwordInputRef = useRef();
+
+    const handleUsernameChanged = (username:string) => {
+        usernameChanged(username);
+        setUsername(username);
+    }
+
+    const handlePasswordChanged = (password:string) => {
+        passwordChanged(password)
+        setPassword(password)
+    }
+
+    const handleUsernameBlur = () => {
+        setUsernameTouched(true)
+    }
+
+    const handlePasswordBlur = () => {
+        setPasswordTouched(true)
+    }
 
     const usernameSubmitPress = () => {
         if (passwordInputRef.current) {
             passwordInputRef.current.focus();
         }
     }
+
+    const usernameError = 
+        ! username && usernameTouched
+            ? Strings.USERNAME_REQUIRED
+            : '';
+
+    const passwordError = 
+        ! password && passwordTouched
+            ? Strings.PASSWORD_REQUIRED
+            : '';
 
     return (
         <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -25,22 +58,26 @@ const LoginView = ({ usernameChanged, passwordChanged, buttonClicked, error }: a
             </View>
             <View style={styles.formContainer}>
                 <FormTextInput
-                    onChangeText={(username: string) => usernameChanged(username)}
+                    onChangeText={(username: string) => handleUsernameChanged(username)}
                     placeholder={Strings.USERNAME_PLACEHOLDER}
                     keyboardType="url"
                     autoCorrect={false}
                     returnKeyLabel='next'
                     autoCapitalize='none'
-                    onSubmitEditing={usernameSubmitPress} />
+                    onSubmitEditing={usernameSubmitPress} 
+                    onBlur={handleUsernameBlur}
+                    error={usernameError}/>
                 <FormTextInput
                     ref={passwordInputRef}
-                    onChangeText={(password: string) => passwordChanged(password)}
+                    onChangeText={(password: string) => handlePasswordChanged(password)}
                     placeholder={Strings.PASSWORD_PLACEHOLDER}
                     secureTextEntry={true}
                     returnKeyType='done'
-                    onSubmitEditing={buttonClicked} />
+                    onSubmitEditing={buttonClicked} 
+                    onBlur={handlePasswordBlur}
+                    error={passwordError}/>
                 {error != null ? <Text style={styles.error}>{error}</Text> : null}
-                <LoginButton onPress={buttonClicked} text={Strings.LOGIN} />
+                <LoginButton onPress={buttonClicked} text={Strings.LOGIN} disabled={!username || !password}/>
                 <Text>&copy;{year} Giulio Bosco</Text>
             </View>
         </KeyboardAvoidingView>
@@ -84,6 +121,6 @@ const styles = StyleSheet.create({
     error: {
         color: Colors.RED,
         borderBottomWidth: StyleSheet.hairlineWidth,
-        marginBottom: 20,
+        marginBottom: 10,
     },
 });
