@@ -1,7 +1,12 @@
 import fetchMock from 'fetch-mock';
 
 import Config from '../config/config'
-import freqlineService, { statusService, frequenceService } from './FreqlineService';
+import freqlineService, { 
+    statusService, 
+    frequenceService,
+    micService,
+    decibelService
+} from './FreqlineService';
 
 describe('Service::FreqlineService', () => {
 
@@ -209,7 +214,7 @@ describe('Service::frequenceService', () => {
         fetchMock.reset();
     })
     
-    it('frequenceService.set(): should call api with 0 as status', async () => {
+    it('frequenceService.set(): should call api with 0 as frequence', async () => {
         const body = { ok: true, }
         fetchMock.mock({
             name: name+'/set _ok_0',
@@ -227,10 +232,10 @@ describe('Service::frequenceService', () => {
         })
     })
 
-    it('frequenceService.set(): should call api with 1000 as status', async () => {
+    it('frequenceService.set(): should call api with 1000 as frequence', async () => {
         const body = { ok: true, }
         fetchMock.mock({
-            name: name+'/set _ok_1',
+            name: name+'/set _ok_1000',
             matcher: url+'?frequence=1000',
             method: 'POST',
             response: {
@@ -240,6 +245,172 @@ describe('Service::frequenceService', () => {
         })
 
         await frequenceService.set(1000).then(data => {
+            expect(data).toEqual(body)
+            fetchMock.reset();
+        })
+    })
+})
+
+describe('Service::micService', () => {
+
+    const name = 'action/generatorMicTimer';
+    const url = Config.getApiBase(name);
+
+    // testing getApiBase Get freqlineStatus
+    it('micService.get(): should call api and return JSON', async () => {
+        const body = { ok: true, }
+        fetchMock.mock({
+            name: name+'/get _ok',
+            matcher: url,
+            method: 'GET',
+            response: {
+                status: 200,
+                body
+            }
+        })
+
+        await micService.get().then(data => {
+            expect(data).toEqual(body)
+            fetchMock.reset();
+        })
+    })
+
+    it('micService.get(): should\'t call thenFunction and should call catchFunction', async () => {
+        fetchMock.mock({
+            name: name+'/get _ok_func',
+            matcher: url,
+            method: 'GET',
+            response: {
+                status: 200,
+                body: {}
+            }
+        })
+
+        const thenFunction = jest.fn();
+        const catchFunction = jest.fn();
+
+        await micService.get().then(thenFunction).catch(catchFunction)
+
+        expect(thenFunction).toHaveBeenCalled();
+        expect(catchFunction).not.toHaveBeenCalled();
+
+        fetchMock.reset();
+    })
+    
+    it('micService.set(): should call api with 0 as timer', async () => {
+        const body = { ok: true, }
+        fetchMock.mock({
+            name: name+'/set _ok_0',
+            matcher: url+'?timer=0',
+            method: 'POST',
+            response: {
+                status: 200,
+                body
+            }
+        })
+
+        await micService.set(0).then(data => {
+            expect(data).toEqual(body)
+            fetchMock.reset();
+        })
+    })
+
+    it('micService.set(): should call api with 60 as timer', async () => {
+        const body = { ok: true, }
+        fetchMock.mock({
+            name: name+'/set _ok_60',
+            matcher: url+'?timer=60',
+            method: 'POST',
+            response: {
+                status: 200,
+                body
+            }
+        })
+
+        await micService.set(60).then(data => {
+            expect(data).toEqual(body)
+            fetchMock.reset();
+        })
+    })
+})
+
+describe('Service::Service', () => {
+
+    const name = 'action/generatorDecibel';
+    const url = Config.getApiBase(name);
+
+    // testing getApiBase Get freqlineStatus
+    it('decibelService.get(): should call api and return JSON', async () => {
+        const body = { ok: true, }
+        fetchMock.mock({
+            name: name+'/get _ok',
+            matcher: url,
+            method: 'GET',
+            response: {
+                status: 200,
+                body
+            }
+        })
+
+        await decibelService.get().then(data => {
+            expect(data).toEqual(body)
+            fetchMock.reset();
+        })
+    })
+
+    it('decibelService.get(): should\'t call thenFunction and should call catchFunction', async () => {
+        fetchMock.mock({
+            name: name+'/get _ok_func',
+            matcher: url,
+            method: 'GET',
+            response: {
+                status: 200,
+                body: {}
+            }
+        })
+
+        const thenFunction = jest.fn();
+        const catchFunction = jest.fn();
+
+        await decibelService.get().then(thenFunction).catch(catchFunction)
+
+        expect(thenFunction).toHaveBeenCalled();
+        expect(catchFunction).not.toHaveBeenCalled();
+
+        fetchMock.reset();
+    })
+    
+    it('decibelService.set(): should call api with 0 as decibel', async () => {
+        const body = { ok: true, }
+        fetchMock.mock({
+            name: name+'/set _ok_0',
+            matcher: url+'?decibel=0',
+            method: 'POST',
+            response: {
+                status: 200,
+                body
+            }
+        })
+
+        await decibelService.set(0).then(data => {
+            expect(data).toEqual(body)
+            fetchMock.reset();
+        })
+    })
+
+    it('decibelService.set(): should call api with 60 as decibel', async () => {
+        const body = { ok: true, }
+        fetchMock.mock({
+            name: name+'/set _ok_60',
+            matcher: url+'?decibel=60',
+            method: 'POST',
+            response: {
+                status: 200,
+                body
+            }
+        })
+
+        await decibelService.set(60).then(data => {
             expect(data).toEqual(body)
             fetchMock.reset();
         })

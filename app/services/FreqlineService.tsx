@@ -52,4 +52,38 @@ const frequenceService = {
     }
 }
 
-export { statusService, frequenceService };
+const micUrl = 'action/generatorMicTimer';
+
+const micService = {
+    get: () => {
+        return fetch(Config.getApiBase(micUrl), GET_HEADER).then(response => {
+            return response.json();
+        }).then(json => json); 
+    },
+    set: (timer:number) => {
+        const url = Config.getApiBase(micUrl) + '?timer=' + timer;
+
+        return fetch(url, POST_HEADER)
+            .then(response => response.json())
+            .then(json => json);
+    }
+}
+
+const decibelUrl = 'action/generatorDecibel';
+
+const decibelService = {
+    get: () => {
+        return fetch(Config.getApiBase(decibelUrl), GET_HEADER).then(response => {
+            return response.json();
+        }).then(json => json); 
+    },
+    set: (decibel:number) => {
+        const url = Config.getApiBase(decibelUrl) + '?decibel=' + decibel;
+
+        return fetch(url, POST_HEADER)
+            .then(response => response.json())
+            .then(json => json);
+    }
+}
+
+export { statusService, frequenceService, micService, decibelService };
