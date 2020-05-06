@@ -12,6 +12,7 @@ import netInfoMiddleware from './app/middlewares/netInfoMiddleware';
 import isLoggedInMiddleware from './app/middlewares/isLoggedInMiddleware';
 import loginMiddleware from './app/middlewares/loginMiddleware';
 import permissionsMiddleware from './app/middlewares/permissionsMiddleware';
+import logoutMiddleware from './app/middlewares/logoutMiddleware';
 import { Colors } from './app/config/config';
 
 export default class App extends Component { 
@@ -26,6 +27,7 @@ export default class App extends Component {
         isLoggedInMiddleware,
         loginMiddleware,
         permissionsMiddleware,
+        logoutMiddleware,
       ]
     });
 
