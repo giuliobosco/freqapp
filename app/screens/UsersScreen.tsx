@@ -8,7 +8,7 @@ export default function ({ navigation }:any) {
     return (
         <SafeAreaView style={styles.container}>
             <Text>Users</Text>
-            <Button title="Go to user" onPress={() => navigation.navigate(UsersStacks.USERS)} />
+            <Button title="Go to user" onPress={() => navigation.navigate(UsersStacks.USER)} />
         </SafeAreaView>
     )
 }
