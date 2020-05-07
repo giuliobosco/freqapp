@@ -11,7 +11,7 @@ import Config from '../config/config';
 const create = () => {
     const store = {
         dispatch: jest.fn(() => { }),
-        getState: () => { return { login: { username: 'hello', password: 'world' } } }
+        getState: () => { return { auth: { username: 'hello', password: 'world' } } }
     }
     const next = jest.fn();
 
