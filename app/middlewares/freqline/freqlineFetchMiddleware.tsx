@@ -12,7 +12,7 @@ import {
     decibelService,
 } from '../../services/FreqlineService';
 
-const freqlineMiddleware = ({dispatch}:any) => (next:any) => (action:any) => {
+const freqlineFetchMiddleware = ({dispatch}:any) => (next:any) => (action:any) => {
     if (action.type === freqlineStartFetch.toString()) {
         statusService.get().then(json => {
             dispatch(statusFetched(json.status))
@@ -34,4 +34,4 @@ const freqlineMiddleware = ({dispatch}:any) => (next:any) => (action:any) => {
     return next(action);
 }
 
-export default freqlineMiddleware;
+export default freqlineFetchMiddleware;

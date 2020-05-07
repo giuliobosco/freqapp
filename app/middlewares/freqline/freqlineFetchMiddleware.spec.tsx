@@ -1,7 +1,7 @@
 import fetchMock from 'fetch-mock';
 
-import freqlineMiddleware from './freqlineMiddleware';
-import { freqlineStartFetch, statusFetched } from '../../reducers/freqlineSlice';
+import freqlineFetchMiddleware from './freqlineFetchMiddleware';
+import { freqlineStartFetch } from '../../reducers/freqlineSlice';
 import Config from '../../config/config';
 
 const create = () => {
@@ -10,7 +10,7 @@ const create = () => {
     }
     const next = jest.fn();
 
-    const invoke = (action: any) => freqlineMiddleware(store)(next)(action);
+    const invoke = (action: any) => freqlineFetchMiddleware(store)(next)(action);
 
     return { store, next, invoke };
 }
@@ -32,7 +32,7 @@ const mock = (action:string) => {
     })
 }
 
-describe('Middleware::freqlineMiddleware', () => {
+describe('Middleware::freqlineFetchMiddleware', () => {
 
     it('calls test with causal action', () => {
         const { next, invoke } = create()
