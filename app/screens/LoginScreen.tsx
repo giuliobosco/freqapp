@@ -52,7 +52,7 @@ LoginComponent.prototype = {
 }
 
 const mapStateToProps = state => ({
-    login: state.auth,
+    auth: state.auth,
 })
 
 const mapDispatchToProps = {

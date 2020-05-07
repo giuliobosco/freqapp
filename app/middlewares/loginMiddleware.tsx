@@ -7,7 +7,7 @@ import { loginService } from '../services/AuthenticationService';
 
 const loginMiddleware = ({ dispatch, getState }: any) => (next: any) => (action: any) => {
     if (action.type == loginButtonClicked.toString()) {
-        const { username, password } = getState().login;
+        const { username, password } = getState().auth;
         loginService(username, password).then(json => {
             if (json.status == 200) {
                 dispatch(loginSuccessCheck());
