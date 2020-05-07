@@ -178,4 +178,160 @@ describe('Reducer::freqline', () => {
             payload: decibel
         })).toEqual(state);
     })
+
+    // updateStatus
+    it('should handle updateStatus true', () => {
+        const status = true;
+        const state = _.clone(initState);
+        state.status = status;
+
+        expect(freqline(undefined, {
+            type: updateStatus,
+            payload: status,
+        })).toEqual(state);
+    })
+
+    it('should handle updateStatus false', () => {
+        const status = false;
+        const state = _.clone(initState);
+        state.status = status;
+
+        expect(freqline(undefined, {
+            type: updateStatus,
+            payload: status,
+        })).toEqual(state);
+    })
+
+    it('should handle updateStatus update status', () => {
+        const previusStatus = true;
+
+        const previusState = _.clone(initState);
+        previusState.status = previusStatus;
+
+        const status = !previusStatus;
+        const state = _.clone(initState);
+        state.status = status;
+
+        expect(freqline(previusState, {
+            type: updateStatus,
+            payload: status,
+        })).toEqual(state);
+    })
+
+    // updateFrequence
+    it('should handle updateFrequence 0', () => {
+        const frequence = 0
+        const state = _.clone(initState);
+        state.frequence = frequence,
+    
+        expect(freqline(undefined, {
+            type: updateFrequence,
+            payload: frequence,
+        })).toEqual(state);
+    })
+
+    it('should handle updateFrequence 10', () => {
+        const frequence = 10
+        const state = _.clone(initState);
+        state.frequence = frequence,
+    
+        expect(freqline(undefined, {
+            type: updateFrequence,
+            payload: frequence,
+        })).toEqual(state);
+    })
+
+    it('should handle updateFrequence update frequence', () => {
+        const previusFrequence = 100;
+
+        const previusState = _.clone(initState);
+        previusState.frequence = previusFrequence;
+
+        const frequence = 1000;
+        const state = _.clone(initState);
+        state.frequence = frequence;
+
+        expect(freqline(previusState, {
+            type: updateFrequence,
+            payload: frequence
+        })).toEqual(state);
+    })
+
+    // updateMicTimer
+    it('should handle updateMicTimer 0', () => {
+        const micTimer = 0
+        const state = _.clone(initState);
+        state.micTimer = micTimer,
+    
+        expect(freqline(undefined, {
+            type: updateMicTimer,
+            payload: micTimer,
+        })).toEqual(state);
+    })
+
+    it('should handle updateMicTimer 10', () => {
+        const micTimer = 10
+        const state = _.clone(initState);
+        state.micTimer = micTimer,
+    
+        expect(freqline(undefined, {
+            type: updateMicTimer,
+            payload: micTimer,
+        })).toEqual(state);
+    })
+
+    it('should handle updateMicTimer update micTimer', () => {
+        const previusMicTimer = 10;
+
+        const previusState = _.clone(initState);
+        previusState.micTimer = previusMicTimer;
+
+        const micTimer = 60;
+        const state = _.clone(initState);
+        state.micTimer = micTimer;
+
+        expect(freqline(previusState, {
+            type: updateMicTimer,
+            payload: micTimer
+        })).toEqual(state);
+    })
+
+    // updateDecibel
+    it('should handle decibelFetched 0', () => {
+        const decibel = 0
+        const state = _.clone(initState);
+        state.decibel = decibel,
+    
+        expect(freqline(undefined, {
+            type: updateDecibel,
+            payload: decibel,
+        })).toEqual(state);
+    })
+
+    it('should handle updateDecibel 10', () => {
+        const decibel = 10
+        const state = _.clone(initState);
+        state.decibel = decibel,
+    
+        expect(freqline(undefined, {
+            type: updateDecibel,
+            payload: decibel,
+        })).toEqual(state);
+    })
+
+    it('should handle updateDecibel update decibel', () => {
+        const previusDecibel = 50;
+
+        const previusState = _.clone(initState);
+        previusState.decibel = previusDecibel;
+
+        const decibel = 60;
+        const state = _.clone(initState);
+        state.decibel = decibel;
+
+        expect(freqline(previusState, {
+            type: updateDecibel,
+            payload: decibel
+        })).toEqual(state);
+    })
 })

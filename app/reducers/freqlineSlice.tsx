@@ -28,18 +28,25 @@ const freqlineSlice = createSlice({
             state.decibel = action.payload;
             return state;
         },
-        updateStatus: state => {
+        updateStatus: (state, action) => {
+            state.status = action.payload;
             return state;
         },
-        updateFrequence: state => {
+        updateFrequence: (state, action) => {
+            state.frequence = action.payload;
             return state;
         },
-        updateMicTimer: state => {
+        updateMicTimer: (state, action) => {
+            state.micTimer = action.payload;
             return state;
         },
-        updateDecibel: state => {
+        updateDecibel: (state, action) => {
+            state.decibel = action.payload;
             return state;
-        }
+        },
+        freqlineStartPush: state => {
+            return state;
+        },
     }
 })
 
@@ -53,6 +60,7 @@ export const {
     updateFrequence,
     updateMicTimer,
     updateDecibel,
+    freqlineStartPush,
 } = freqlineSlice.actions;
 
 export default freqlineSlice.reducer;
