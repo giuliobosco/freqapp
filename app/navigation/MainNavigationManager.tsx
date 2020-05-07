@@ -17,14 +17,9 @@ import { Strings } from '../config/string';
 import { Permissions } from '../config/config';
 import useFetching from '../utils/useFetching';
 import LoadingView from '../components/LoadingView';
+import MainTabs from './Navigation';
 
 const Tab = createBottomTabNavigator();
-
-const MainTabs = {
-    FREQLINE: 'freqline',
-    USERS: 'users',
-    SETTINGS: 'settings',
-}
 
 const MainNavigationManager = ({ auth, permissionsStartCheck }: any) => {
 
@@ -83,8 +78,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
     permissionsStartCheck,
 }
-
-export { MainTabs };
 
 export default connect(
     mapStateToProps,

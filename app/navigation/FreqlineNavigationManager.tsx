@@ -2,22 +2,19 @@ import React from 'react';
 import { Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import FreqlineScreen from '../screens/FreqlineScreen';
 import { Strings } from '../config/string';
 import { freqlineStartPush }  from '../reducers/freqlineSlice';
-import { connect } from 'react-redux';
+import { FreqlineStacks } from './Navigation';
 
 const Stack = createStackNavigator();
-
-const UsersTabs = {
-    FREQLINE: 'freqline',
-}
 
 const FreqlineNavigationManager = ({freqlineStartPush}) => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name={UsersTabs.FREQLINE} 
+            <Stack.Screen name={FreqlineStacks.FREQLINE} 
                 component={FreqlineScreen} 
                 options={{ 
                     title: Strings.FREQLINE,
@@ -37,8 +34,6 @@ FreqlineNavigationManager.prototype = {
 const mapDispatchToProps = {
     freqlineStartPush,
 }
-
-export { UsersTabs };
 
 export default connect(
     null,
