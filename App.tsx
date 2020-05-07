@@ -13,6 +13,8 @@ import isLoggedInMiddleware from './app/middlewares/isLoggedInMiddleware';
 import loginMiddleware from './app/middlewares/loginMiddleware';
 import permissionsMiddleware from './app/middlewares/permissionsMiddleware';
 import logoutMiddleware from './app/middlewares/logoutMiddleware';
+import freqlineFetchMiddleware from './app/middlewares/freqline/freqlineFetchMiddleware'
+import freqlinePushMiddleware from './app/middlewares/freqline/freqlinePushMiddleware'
 import { Colors } from './app/config/config';
 
 export default class App extends Component { 
@@ -28,6 +30,8 @@ export default class App extends Component {
         loginMiddleware,
         permissionsMiddleware,
         logoutMiddleware,
+        freqlineFetchMiddleware,
+        freqlinePushMiddleware,
       ]
     });
 
