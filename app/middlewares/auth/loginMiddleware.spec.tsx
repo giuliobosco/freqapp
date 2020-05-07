@@ -1,46 +1,46 @@
 import fetchMock from 'fetch-mock';
 
-import isLoggedInMiddleware from './isLoggedInMiddleware';
+import loginMiddleware from './loginMiddleware';
 import {
-    loginStartCheck,
+    loginButtonClicked,
     loginSuccessCheck,
-    loginErrorCheck
-} from '../reducers/authSlice';
-import Config from '../config/config';
+    loginErrorCheck,
+} from '../../reducers/authSlice'
+import Config from '../../config/config';
 
 const create = () => {
     const store = {
         dispatch: jest.fn(() => { }),
+        getState: () => { return { auth: { username: 'hello', password: 'world' } } }
     }
     const next = jest.fn();
 
-    const invoke = (action: any) => isLoggedInMiddleware(store)(next)(action);
+    const invoke = (action: any) => loginMiddleware(store)(next)(action)
 
     return { store, next, invoke };
 }
 
-describe('Middleware::isLoggedInMiddleware', () => {
-
-    it('calls test with casual action', () => {
+describe('Middleware::loginMiddleware', () => {
+    it('should call with casual action', () => {
         const { next, invoke } = create();
         const action = { type: 'Test' };
         invoke(action);
         expect(next).toHaveBeenCalledWith(action);
     })
 
-    it('should be called next with loginStartCheck', () => {
+    it('should be called next with loginButtonClicked', () => {
         fetchMock.mock({
             name: 'route',
-            matcher: Config.getApiBase() + 'action/login',
-            method: 'GET',
+            matcher: Config.getApiBase() + 'action/login?username=hello&password=world',
+            method: 'POST',
             response: {
                 status: 200,
                 body: []
             }
-        });
+        })
 
         const { next, invoke } = create();
-        const action = { type: loginStartCheck.toString() }
+        const action = { type: loginButtonClicked.toString() };
         invoke(action)
         expect(next).toHaveBeenCalledWith(action);
     })
@@ -54,12 +54,12 @@ describe('Middleware::isLoggedInMiddleware', () => {
 
     it('should be called with loginErrorCheck', () => {
         const { next, invoke } = create();
-        const error = 'Eroor' + Math.random();
+        const error = 'Error' + Math.random();
         const action = {
             type: loginErrorCheck.toString(),
-            payload: error
+            payload: error,
         }
-        invoke(action);
+        invoke(action)
         expect(next).toHaveBeenCalledWith(action);
     })
 })

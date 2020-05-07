@@ -1,8 +1,8 @@
 import fetchMock from 'fetch-mock';
 
 import logoutMiddleware from './logoutMiddleware';
-import { logout } from '../reducers/authSlice';
-import Config from '../config/config';
+import { logout } from '../../reducers/authSlice';
+import Config from '../../config/config';
 
 const create = () => {
     const next = jest.fn();

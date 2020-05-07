@@ -2,8 +2,8 @@ import {
     permissionsStartCheck,
     permissionsSuccessCheck,
     permissionsErrorCheck,
-} from '../reducers/authSlice';
-import { getPermissionsService } from '../services/AuthenticationService';
+} from '../../reducers/authSlice';
+import { getPermissionsService } from '../../services/AuthenticationService';
 
 const permissionsMiddleware = ({dispatch}:any) => (next:any) => (action:any) => {
     if (action.type == permissionsStartCheck.toString()) {

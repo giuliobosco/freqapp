@@ -5,8 +5,8 @@ import {
     permissionsStartCheck,
     permissionsSuccessCheck,
     permissionsErrorCheck,
-} from '../reducers/authSlice'
-import Config from '../config/config';
+} from '../../reducers/authSlice'
+import Config from '../../config/config';
 
 const create = () => {
     const store = {

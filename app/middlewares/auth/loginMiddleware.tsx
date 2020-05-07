@@ -2,8 +2,8 @@ import {
     loginButtonClicked,
     loginSuccessCheck,
     loginErrorCheck,
-} from '../reducers/authSlice';
-import { loginService } from '../services/AuthenticationService';
+} from '../../reducers/authSlice';
+import { loginService } from '../../services/AuthenticationService';
 
 const loginMiddleware = ({ dispatch, getState }: any) => (next: any) => (action: any) => {
     if (action.type == loginButtonClicked.toString()) {

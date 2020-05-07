@@ -1,5 +1,5 @@
-import { logout } from '../reducers/authSlice';
-import { logoutService } from '../services/AuthenticationService';
+import { logout } from '../../reducers/authSlice';
+import { logoutService } from '../../services/AuthenticationService';
 
 const logoutMiddleware = () => (next:any) => (action:any) => {
     if (action.type === logout.toString()) {

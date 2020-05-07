@@ -8,11 +8,11 @@ import MainComponent from './app/screens/MainScreen'
 import rootReducer from './app/reducers';
 
 import freqlineStatusMiddleware from './app/middlewares/freqlineStatusMiddleware';
-import netInfoMiddleware from './app/middlewares/netInfoMiddleware';
-import isLoggedInMiddleware from './app/middlewares/isLoggedInMiddleware';
-import loginMiddleware from './app/middlewares/loginMiddleware';
-import permissionsMiddleware from './app/middlewares/permissionsMiddleware';
-import logoutMiddleware from './app/middlewares/logoutMiddleware';
+import netInfoMiddleware from './app/middlewares/auth/netInfoMiddleware';
+import isLoggedInMiddleware from './app/middlewares/auth/isLoggedInMiddleware';
+import loginMiddleware from './app/middlewares/auth/loginMiddleware';
+import permissionsMiddleware from './app/middlewares/auth/permissionsMiddleware';
+import logoutMiddleware from './app/middlewares/auth/logoutMiddleware';
 import freqlineFetchMiddleware from './app/middlewares/freqline/freqlineFetchMiddleware'
 import freqlinePushMiddleware from './app/middlewares/freqline/freqlinePushMiddleware'
 import { Colors } from './app/config/config';

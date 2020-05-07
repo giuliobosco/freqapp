@@ -2,8 +2,8 @@ import {
     loginStartCheck,
     loginSuccessCheck,
     loginErrorCheck,
-} from '../reducers/authSlice';
-import { isLoggedInService } from '../services/AuthenticationService';
+} from '../../reducers/authSlice';
+import { isLoggedInService } from '../../services/AuthenticationService';
 
 const isLoggedInMiddleware = ({ dispatch }: any) => (next: any) => (action: any) => {
     if (action.type === loginStartCheck.toString()) {
