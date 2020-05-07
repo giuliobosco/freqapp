@@ -9,8 +9,8 @@ import { Strings } from '../config/string';
 const Stack = createStackNavigator();
 
 const UsersTabs = {
-    USERS: 'Users',
-    USER: 'User'
+    USERS: 'users/users',
+    USER: 'users/user'
 }
 
 const UsersNavigationManager = () => {

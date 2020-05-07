@@ -6,8 +6,8 @@ import _ from 'lodash';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 
-import FreqlineScreen from '../screens/FreqlineScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import FreqlineNavigationManager from './FreqlineNavigationManager';
+import SettingsNavigationManager from './SettingsNavigationManager';
 import UnauthorizedView from '../components/UnauthorizedView';
 import UsersNavigationManager from './UsersNavigationManager';
 
@@ -21,9 +21,9 @@ import LoadingView from '../components/LoadingView';
 const Tab = createBottomTabNavigator();
 
 const MainTabs = {
-    FREQLINE: 'Freqline',
-    USERS: 'Users',
-    SETTINGS: 'Settings',
+    FREQLINE: 'freqline',
+    USERS: 'users',
+    SETTINGS: 'settings',
 }
 
 const MainNavigationManager = ({ auth, permissionsStartCheck }: any) => {
@@ -63,9 +63,9 @@ const MainNavigationManager = ({ auth, permissionsStartCheck }: any) => {
                     },
 
                 })}>
-                {_.indexOf(permissions, Permissions.USER) > -1 ? <Tab.Screen name={MainTabs.FREQLINE} component={FreqlineScreen} options={{ title: Strings.FREQLINE }} /> : null}
+                {_.indexOf(permissions, Permissions.USER) > -1 ? <Tab.Screen name={MainTabs.FREQLINE} component={FreqlineNavigationManager} options={{ title: Strings.FREQLINE }} /> : null}
                 {_.indexOf(permissions, Permissions.ADMIN) > -1 ? <Tab.Screen name={MainTabs.USERS} component={UsersNavigationManager} options={{ title: Strings.USERS }} /> : null}
-                {_.indexOf(permissions, Permissions.USER) > -1 ? <Tab.Screen name={MainTabs.SETTINGS} component={SettingsScreen} options={{ title: Strings.SETTINGS }} /> : null}
+                {_.indexOf(permissions, Permissions.USER) > -1 ? <Tab.Screen name={MainTabs.SETTINGS} component={SettingsNavigationManager} options={{ title: Strings.SETTINGS }} /> : null}
             </Tab.Navigator>
         </NavigationContainer>
     );
