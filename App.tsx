@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import MainComponent from './app/screens/MainScreen'
 import rootReducer from './app/reducers';
 
-import freqlineStatusMiddleware from './app/middlewares/freqlineStatusMiddleware';
+import freqlineStatusMiddleware from './app/middlewares/freqline/freqlineStatusMiddleware';
 import netInfoMiddleware from './app/middlewares/auth/netInfoMiddleware';
 import isLoggedInMiddleware from './app/middlewares/auth/isLoggedInMiddleware';
 import loginMiddleware from './app/middlewares/auth/loginMiddleware';

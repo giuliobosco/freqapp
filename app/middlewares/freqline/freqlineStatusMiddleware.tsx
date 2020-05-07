@@ -2,8 +2,8 @@ import {
     freqlineStatusStartCheck,
     freqlineStatusSuccessCheck,
     freqlineStatusErrorCheck,
-} from '../reducers/freqlineStatusSlice'
-import freqlineService from '../services/FreqlineService';
+} from '../../reducers/freqlineStatusSlice'
+import freqlineService from '../../services/FreqlineService';
 
 export default function freqlineStatusMiddleware({ dispatch }: any) {
     return function (next: any) {

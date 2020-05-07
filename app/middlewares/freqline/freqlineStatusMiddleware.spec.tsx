@@ -1,8 +1,8 @@
 import fetchMock from 'fetch-mock';
 
 import freqlineStatusMiddleware from './freqlineStatusMiddleware'
-import { freqlineStatusStartCheck, freqlineStatusSuccessCheck, freqlineStatusErrorCheck } from '../reducers/freqlineStatusSlice';
-import Config from '../config/config';
+import { freqlineStatusStartCheck, freqlineStatusSuccessCheck, freqlineStatusErrorCheck } from '../../reducers/freqlineStatusSlice';
+import Config from '../../config/config';
 
 const create = () => {
     const store = {
