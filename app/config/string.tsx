@@ -10,6 +10,11 @@ const Strings = {
     PASSWORD_REQUIRED: 'Password is required',
     LOGIN: 'login',
     LOGOUT: 'logout',
+    GENERATOR_STATUS: 'Generator Status',
+    GENERATOR_FREQUENCE: 'Generator Frequence',
+    GENERATOR_MIC_TIMER: 'Microphone Timer',
+    GENERATOR_DECIBEL: 'Microphone Decibels',
+    SAVE: 'Save',
 }
 
 export { Strings };

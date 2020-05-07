@@ -15,19 +15,19 @@ import {
 const freqlineFetchMiddleware = ({dispatch}:any) => (next:any) => (action:any) => {
     if (action.type === freqlineStartFetch.toString()) {
         statusService.get().then(json => {
-            dispatch(statusFetched(json.status))
+            dispatch(statusFetched(json.message))
         });
 
         frequenceService.get().then(json => { 
-            dispatch(frequenceFetched(json.frequence))
+            dispatch(frequenceFetched(json.message))
         });
 
         micService.get().then(json => {
-            dispatch(micTimerFetched(json.micTimer))
+            dispatch(micTimerFetched(json.message))
         })
 
         decibelService.get().then(json => {
-            dispatch(decibelFetched(json.decibel));
+            dispatch(decibelFetched(json.message));
         })
     }
 

@@ -1,13 +1,71 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux';
 
-export default function () {
-    return (
-        <View style={styles.container}>
-            <Text>Freqline</Text>
-        </View>
-    )
+import FreqlineView from '../components/FreqlineView';
+import {
+    freqlineStartFetch,
+    updateStatus,
+    updateFrequence,
+    updateMicTimer,
+    updateDecibel,
+    freqlineStartPush,
+} from '../reducers/freqlineSlice';
+import useFetching from '../utils/useFetching';
+
+const FreqlineScreen = ({
+    freqline, 
+    freqlineStartFetch, 
+    updateStatus,
+    updateFrequence,
+    updateMicTimer,
+    updateDecibel,
+    freqlineStartPush,
+}:any) => {
+    useFetching(freqlineStartFetch);
+
+    const viewProps = {
+        freqline,
+        updateStatus,
+        updateFrequence,
+        updateMicTimer,
+        updateDecibel,
+        freqlineStartPush,
+    };
+
+    console.log(freqline);
+
+    return ( <FreqlineView {...viewProps}/> )
 }
+
+FreqlineScreen.prototype = {
+    freqline: PropTypes.object.isRequired, 
+    freqlineStartFetch: PropTypes.func.isRequired, 
+    updateStatus: PropTypes.func.isRequired,
+    updateFrequence: PropTypes.func.isRequired,
+    updateMicTimer: PropTypes.func.isRequired,
+    updateDecibel: PropTypes.func.isRequired,
+    freqlineStartPush: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = state => ({
+    freqline: state.freqline
+})
+
+const mapDispatchToProps = {
+    freqlineStartFetch,
+    updateStatus,
+    updateFrequence,
+    updateMicTimer,
+    updateDecibel,
+    freqlineStartPush,
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(FreqlineScreen);
 
 const styles = StyleSheet.create({
     container: {

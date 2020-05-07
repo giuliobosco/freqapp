@@ -20,6 +20,7 @@ export default class Config {
 const Colors = {
     WHITE: '#FFFFFF',
     LLLIGHT_GRAY: '#efefef',
+    WIDE_GRAY: '#dddddd',
     LLIGHT_GRAY: '#BBBBBB',
     LIGHT_GRAY: '#CCCCCC',
     GRAY: '#777777',
@@ -35,4 +36,22 @@ const Permissions = {
     USER: 'user',
 }
 
-export { Colors, Permissions };
+const FreqlineValueConfig = {
+    frequence: {
+        min: 0,
+        max: 25000,
+        unitMeasure: 'Hz',
+    },
+    micTimer: {
+        min: 0,
+        max: 1000000,
+        unitMeasure: 's',
+    },
+    decibel: {
+        min: 0,
+        max: 200,
+        unitMeasure: 'db',
+    }
+}
+
+export { Colors, Permissions, FreqlineValueConfig };
