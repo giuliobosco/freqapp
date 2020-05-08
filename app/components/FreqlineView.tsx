@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, KeyboardAvoidingView, Switch, Slider, ScrollView } from "react-native";
 import PropTypes from 'prop-types';
 
@@ -13,15 +13,14 @@ const FreqlineView = ({
     updateFrequence,
     updateMicTimer,
     updateDecibel,
-    freqlineStartPush,
 }: any) => {
-    const [frequenceInternal, setFrequenceInternal] = useState(-1);
+    const [frequenceInternal, setFrequenceInternal] = useState(0);
 
     const { status, frequence, micTimer, decibel } = freqline;
 
-    if (frequenceInternal < 0) {
+    useEffect(() => {
         setFrequenceInternal(frequence);
-    }
+    }, [frequence])
 
     const statusChanged = (status: boolean) => updateStatus(status);
 
@@ -73,7 +72,6 @@ const FreqlineView = ({
         decibelInt = Math.floor(decibelInt);
         updateDecibel(decibelInt + '');
     }
-    const saveButtonPressed = () => freqlineStartPush();
 
     return (
         <KeyboardAvoidingView style={styles.container} behavior="padding">

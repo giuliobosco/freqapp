@@ -10,7 +10,6 @@ import {
     updateFrequence,
     updateMicTimer,
     updateDecibel,
-    freqlineStartPush,
 } from '../reducers/freqlineSlice';
 import useFetching from '../utils/useFetching';
 
@@ -21,7 +20,6 @@ const FreqlineScreen = ({
     updateFrequence,
     updateMicTimer,
     updateDecibel,
-    freqlineStartPush,
 }:any) => {
     useFetching(freqlineStartFetch);
 
@@ -31,10 +29,7 @@ const FreqlineScreen = ({
         updateFrequence,
         updateMicTimer,
         updateDecibel,
-        freqlineStartPush,
     };
-
-    console.log(freqline);
 
     return ( <FreqlineView {...viewProps}/> )
 }
@@ -46,7 +41,6 @@ FreqlineScreen.prototype = {
     updateFrequence: PropTypes.func.isRequired,
     updateMicTimer: PropTypes.func.isRequired,
     updateDecibel: PropTypes.func.isRequired,
-    freqlineStartPush: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -59,7 +53,6 @@ const mapDispatchToProps = {
     updateFrequence,
     updateMicTimer,
     updateDecibel,
-    freqlineStartPush,
 }
 
 export default connect(
