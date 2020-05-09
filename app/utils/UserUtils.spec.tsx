@@ -40,7 +40,7 @@ describe('Utils::UserUtils', () => {
         expect(UserUtils.buildInsertRequest(user)).toEqual(url);
     })
 
-    it('should return the delete api url with parameters', () => {
+    it('should return the update api url with parameters', () => {
         const rnd = Math.random();
 
         const user:User = {
@@ -52,7 +52,7 @@ describe('Utils::UserUtils', () => {
             lastname: 'e'+rnd,
         }
 
-        const url = userApi + '?id='+user.id+'&username='+user.username+'&password='+user.password+'&salt=salt&firstname='+user.username+'&lastname'+user.lastname+'&email='+user.email+'&favoriteGenerator=1';
+        const url = userApi + '?id='+user.id+'&username='+user.username+'&password='+user.password+'&salt=salt&firstname='+user.firstname+'&lastname='+user.lastname+'&email='+user.email+'&favoriteGenerator=1';
 
         expect(UserUtils.buildUpdateRequest(user)).toEqual(url);
     })
