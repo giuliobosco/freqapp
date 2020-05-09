@@ -18,8 +18,10 @@ const buildDeleteRequest = (id:number):string => {
 
 const buildInsertRequest = (group:Group):string => {
     let url = groupApi + '?';
-    url += 'name=' + group.name + '&';
-    url += 'parentGroup=' + group.parentGroup;
+    url += 'name=' + group.name
+    if (group.parentGroup != null) {
+        url += '&parentGroup=' + group.parentGroup.id;
+    }
 
     return url;
 }
@@ -27,8 +29,10 @@ const buildInsertRequest = (group:Group):string => {
 const buildUpdateRequest = (group:Group):string => {
     let url = groupApi + '?';
     url += 'id=' + group.id + '&';
-    url += 'name=' + group.name + '&'
-    url += 'parentGroup=' + group.parentGroup;
+    url += 'name=' + group.name;
+    if (group.parentGroup != null) {
+        url += '&parentGroup=' + group.parentGroup.id;
+    }
 
     return url;
 }
