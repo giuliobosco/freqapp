@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
 import user, {
-    userStartFetch,
-    userSuccessFetch,
-    userErrorFetch,
+    getUsersStart,
+    getUsersSuccess,
+    getUsersError,
 } from './userSlice';
 import User from '../models/User';
 
@@ -43,7 +43,7 @@ describe('Reducer::user', () => {
         state.isLoading = true;
 
         expect(user(undefined, {
-            type: userStartFetch,
+            type: getUsersStart,
         })).toEqual(state);
     })
 
@@ -55,7 +55,7 @@ describe('Reducer::user', () => {
         state.users = usersMock;
 
         expect(user(previusState, {
-            type: userSuccessFetch,
+            type: getUsersSuccess,
             payload: usersMock,
         })).toEqual(state);
     })
@@ -69,7 +69,7 @@ describe('Reducer::user', () => {
         state.error = error;
 
         expect(user(previusState, {
-            type: userErrorFetch,
+            type: getUsersError,
             payload: error,
         })).toEqual(state);
     })

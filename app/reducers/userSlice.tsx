@@ -13,16 +13,16 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        userStartFetch: state => {
+        getUsersStart: state => {
             state.isLoading = true;
             return state;
         },
-        userSuccessFetch: (state, action) => {
+        getUsersSuccess: (state, action) => {
             state.users = action.payload;
             state.isLoading = false;
             return state;
         },
-        userErrorFetch: (state, action) => {
+        getUsersError: (state, action) => {
             state.error = action.payload;
             state.isLoading = false;
             return state;
@@ -31,9 +31,9 @@ const userSlice = createSlice({
 })
 
 export const {
-    userStartFetch,
-    userSuccessFetch,
-    userErrorFetch,
+    getUsersStart,
+    getUsersSuccess,
+    getUsersError,
 } = userSlice.actions;
 
 export default userSlice.reducer;
